@@ -60,9 +60,8 @@ nav a:hover,
 nav a:focus-visible,
 .wordmark:hover { color: var(--accent-dark); }
 
-.intro { padding: 105px 0 62px; max-width: 720px; }
+.intro { padding: 56px 0 38px; max-width: 720px; }
 
-.eyebrow,
 .card-kicker {
   margin: 0 0 14px;
   color: var(--accent-dark);
@@ -76,19 +75,11 @@ h2,
 p { margin-top: 0; }
 
 h1 {
-  margin-bottom: 18px;
-  font-size: clamp(42px, 7vw, 76px);
+  margin-bottom: 0;
+  font-size: clamp(36px, 6vw, 64px);
   line-height: 0.98;
   letter-spacing: -0.065em;
   font-weight: 760;
-}
-
-.lede {
-  max-width: 500px;
-  margin-bottom: 0;
-  color: var(--muted);
-  font-size: 20px;
-  line-height: 1.45;
 }
 
 .project-grid {
@@ -264,8 +255,7 @@ h2 {
   .site-header { padding: 20px 0; }
   nav { gap: 14px; }
   nav a { font-size: 12px; }
-  .intro { padding: 72px 0 44px; }
-  .lede { font-size: 18px; }
+  .intro { padding: 44px 0 30px; }
   .project-grid { grid-template-columns: 1fr; gap: 16px; padding-bottom: 60px; }
   .project-card-featured { grid-column: auto; min-height: 0; }
   .site-footer { flex-direction: column; gap: 5px; }
