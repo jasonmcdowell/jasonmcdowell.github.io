@@ -99,8 +99,10 @@ h1 {
 }
 
 .project-card {
+  position: relative;
+  isolation: isolate;
   display: flex;
-  height: 300px;
+  aspect-ratio: 1;
   min-height: 0;
   flex-direction: column;
   overflow: hidden;
@@ -108,29 +110,41 @@ h1 {
   border-radius: 18px;
   background: var(--card);
   box-shadow: var(--shadow);
-  text-decoration: none;
   transition: transform 180ms ease, box-shadow 180ms ease, border-color 180ms ease;
 }
 
-a.project-card:hover,
-a.project-card:focus-visible {
+.card-background-link {
+  position: absolute;
+  z-index: 2;
+  inset: 0;
+  border-radius: inherit;
+}
+
+.project-card:has(> .card-background-link:hover),
+.project-card:has(> .card-background-link:focus-visible) {
   border-color: rgba(213, 107, 62, 0.55);
   box-shadow: 0 24px 60px rgba(35, 52, 45, 0.13);
   transform: translateY(-4px);
+}
+
+.project-card:has(> .card-background-link:focus-visible) {
+  outline: 3px solid var(--accent-dark);
+  outline-offset: 3px;
 }
 
 .project-card-featured { grid-column: auto; min-height: 0; }
 
 .card-image {
   position: relative;
-  flex: 0 0 124px;
-  height: 124px;
-  min-height: 124px;
+  z-index: 3;
+  flex: 0 0 54%;
+  min-height: 0;
   overflow: hidden;
   background: #dfe8df;
+  pointer-events: none;
 }
 
-.card-image::after {
+.card-image:not(.card-image-placeholder)::after {
   position: absolute;
   inset: 0;
   background: linear-gradient(180deg, transparent 48%, rgba(19, 31, 26, 0.35));
@@ -147,7 +161,15 @@ a.project-card:focus-visible {
   transition: transform 500ms ease;
 }
 
-.project-card-featured:hover .card-image img { transform: scale(1.035); }
+.project-card:has(> .card-background-link:hover) .card-image img { transform: scale(1.035); }
+
+.card-image-placeholder {
+  display: grid;
+  place-items: center;
+  background: #f1f3ef;
+}
+
+.resume-panel { background: #edf3ef; }
 
 .card-pill {
   position: absolute;
@@ -162,11 +184,30 @@ a.project-card:focus-visible {
   font-size: 12px;
   font-weight: 700;
   backdrop-filter: blur(10px);
+  cursor: text;
+  pointer-events: auto;
+  user-select: text;
 }
 
-.card-copy { padding: 25px 27px 28px; }
+.card-copy {
+  position: relative;
+  z-index: 3;
+  flex: 1;
+  min-height: 0;
+  padding: 25px 27px 28px;
+  pointer-events: none;
+  user-select: text;
+}
 
-.project-card-featured .card-copy { display: block; }
+.card-copy > * {
+  pointer-events: none;
+}
+
+.card-copy > * > span {
+  cursor: text;
+  pointer-events: auto;
+  user-select: text;
+}
 
 h2 {
   margin-bottom: 8px;
@@ -185,7 +226,7 @@ h2 {
   display: grid;
   width: 56px;
   height: 56px;
-  margin: 25px 27px 0;
+  margin: 0;
   place-items: center;
   border-radius: 14px;
   background: #eef1ec;
@@ -194,13 +235,8 @@ h2 {
   font-weight: 500;
 }
 
-.github-icon { font-size: 31px; }
 .project-card-resume .card-icon { background: #e5eee8; color: #28584c; }
 .xiang-mark { font-family: "Kaiti SC", "STKaiti", "Songti SC", serif; font-weight: 400; }
-.project-card-note { background: #2b493a; color: #f7f8f4; border-color: #2b493a; box-shadow: none; }
-.project-card-note .card-icon { background: rgba(255,255,255,0.12); color: #f0b99d; }
-.project-card-note .card-copy p:not(.card-kicker) { color: #c9d4cb; }
-.project-card-note .card-kicker { color: #f0b99d; }
 
 .card-status {
   display: inline-block;
@@ -210,8 +246,6 @@ h2 {
   font-weight: 800;
   letter-spacing: 0.02em;
 }
-
-.project-card-note .card-status { color: #f0b99d; }
 
 .site-footer {
   display: flex;
@@ -233,11 +267,7 @@ h2 {
   .intro { padding: 72px 0 44px; }
   .lede { font-size: 18px; }
   .project-grid { grid-template-columns: 1fr; gap: 16px; padding-bottom: 60px; }
-  .project-card { height: 360px; }
   .project-card-featured { grid-column: auto; min-height: 0; }
-  .project-card-featured .card-copy { display: block; }
-  .card-image,
-  .card-image img { height: 124px; min-height: 124px; }
   .site-footer { flex-direction: column; gap: 5px; }
 }
 
