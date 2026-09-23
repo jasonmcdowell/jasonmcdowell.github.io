@@ -1,17 +1,20 @@
-# Jason McDowell · personal site
+# jasonmcdowell.github.io · published site
 
-This repository publishes [jasonmcdowell.github.io](https://jasonmcdowell.github.io) with GitHub Pages.
+This public repository is the GitHub Pages deployment assembly for [jasonmcdowell.github.io](https://jasonmcdowell.github.io/).
 
-The root page is a lightweight project showcase. The interactive Dream Home walkthrough lives at:
+## What is published
 
-https://jasonmcdowell.github.io/home/
+- The root page is the personal project showcase.
+- The Dream Home walkthrough is published at [`/home/`](https://jasonmcdowell.github.io/home/).
+
+## Where the source lives
+
+- The **Personal Webpage** project owns the root `index.html`, `site.css`, and showcase assets.
+- The private **Dream Home** project owns the walkthrough source and its `/home/` build.
+- This repository contains the public copies assembled for GitHub Pages. The personal project includes `publish-to-pages.sh` to copy its root files here without committing or pushing automatically.
 
 ## Adding another building
 
-Each building can be self-contained in its own folder, for example `brother-house/`, with its own `index.html`, assets, JavaScript, and CSS. Add a tile to the root `index.html` that links to the new folder.
+A contributor can fork this public repository, add a self-contained building folder such as `brother-house/`, and open a pull request. Review and merge the pull request to publish that building. Add a showcase tile in the Personal Webpage project when the building should appear on the root page.
 
-For collaboration, a contributor can fork this public repository, add a building folder and showcase tile, then open a pull request. Review and merge the pull request to publish it through GitHub Pages.
-
-Keep the repository and each individual file within GitHub's published-site limits. GitHub rejects individual files over 100 MiB; large models, textures, or videos should be compressed, split, or hosted elsewhere.
-
-The full working source, including Blender files and development tools, remains in the private `dream-home` repository.
+Keep each individual file below GitHub's 100 MiB repository-file limit. Large models, textures, or videos should be compressed, split, or hosted elsewhere.
