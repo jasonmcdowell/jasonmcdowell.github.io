@@ -60,17 +60,6 @@ nav a:hover,
 nav a:focus-visible,
 .wordmark:hover { color: var(--accent-dark); }
 
-nav .muted-link { color: var(--muted); }
-
-nav .muted-link span {
-  display: inline-block;
-  margin-left: 3px;
-  color: var(--accent-dark);
-  font-size: 10px;
-  letter-spacing: 0.05em;
-  text-transform: uppercase;
-}
-
 .intro { padding: 105px 0 62px; max-width: 720px; }
 
 .eyebrow,
@@ -204,8 +193,8 @@ h2 {
 }
 
 .github-icon { font-size: 31px; }
+.project-card-resume .card-icon { background: #e5eee8; color: #28584c; }
 .xiang-mark { font-family: "Kaiti SC", "STKaiti", "Songti SC", serif; font-weight: 400; }
-.project-card-soon { background: #eef1ec; box-shadow: none; }
 .project-card-note { background: #2b493a; color: #f7f8f4; border-color: #2b493a; box-shadow: none; }
 .project-card-note .card-icon { background: rgba(255,255,255,0.12); color: #f0b99d; }
 .project-card-note .card-copy p:not(.card-kicker) { color: #c9d4cb; }
