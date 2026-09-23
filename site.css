@@ -204,6 +204,7 @@ h2 {
 }
 
 .github-icon { font-size: 31px; }
+.xiang-mark { font-family: "Kaiti SC", "STKaiti", "Songti SC", serif; font-weight: 400; }
 .project-card-soon { background: #eef1ec; box-shadow: none; }
 .project-card-note { background: #2b493a; color: #f7f8f4; border-color: #2b493a; box-shadow: none; }
 .project-card-note .card-icon { background: rgba(255,255,255,0.12); color: #f0b99d; }
