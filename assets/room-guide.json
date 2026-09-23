@@ -1,0 +1,1339 @@
+{
+  "version": "v07 garden shade study",
+  "rooms": [
+    {
+      "id": "R01",
+      "name": "J + F master bedroom",
+      "kind": "Bedroom",
+      "a": 90,
+      "b": 108,
+      "ri": 26.6,
+      "ro": 50,
+      "contents": "Queen bed (60 × 80-inch mattress) with its head close to the outer shell. The bedside table moves with the bed. Both separate suite doors and the central approach remain open.",
+      "label": [
+        32,
+        99
+      ],
+      "notes": "",
+      "dimensions": {
+        "radial": 23.4,
+        "inner": 8.322313540140282,
+        "outer": 15.643446504023087
+      },
+      "gross_area_sqft": 281.5542285285192,
+      "area_sqft": 269.0118709476535,
+      "area_basis": "Approximate plan allocation less modeled partition footprint; includes low-headroom floor and door thresholds. Furniture and shell footprint not deducted.",
+      "ceiling_ft": 8
+    },
+    {
+      "id": "R02",
+      "name": "Master closet",
+      "kind": "Closet",
+      "a": 72,
+      "b": 90,
+      "ri": 26.6,
+      "ro": 38,
+      "contents": "Wire wardrobe along the radial wall opposite the bedroom doorway, with shelves, hanging rails, garments and bins. The center aisle and D20 approach stay open. Eight-foot ceiling and recessed lighting, with shared loft above.",
+      "label": [
+        31.5,
+        81
+      ],
+      "notes": "",
+      "split": "inside",
+      "dimensions": {
+        "radial": 11.399999999999999,
+        "inner": 8.322313540140282,
+        "outer": 11.889019343057546
+      },
+      "gross_area_sqft": 111.9676320051473,
+      "area_sqft": 101.2833048683548,
+      "area_basis": "Approximate plan allocation less modeled partition footprint; includes low-headroom floor and door thresholds. Furniture and shell footprint not deducted.",
+      "ceiling_ft": 8
+    },
+    {
+      "id": "R03",
+      "name": "Master bathroom",
+      "kind": "Bathroom",
+      "a": 72,
+      "b": 90,
+      "ri": 38,
+      "ro": 50,
+      "contents": "Bathtub close to the outer shell. A large tiled shower follows the side wall opposite the bedroom entrance. Vanity and mirror sit against the inner dividing wall. The toilet backs onto the bedroom-side wall beyond the door approach. Fixtures leave an open center.",
+      "label": [
+        44,
+        81
+      ],
+      "notes": "",
+      "split": "outside",
+      "dimensions": {
+        "radial": 12,
+        "inner": 11.889019343057546,
+        "outer": 15.643446504023087
+      },
+      "gross_area_sqft": 169.58659652337172,
+      "area_sqft": 160.67151589253615,
+      "area_basis": "Approximate plan allocation less modeled partition footprint; includes low-headroom floor and door thresholds. Furniture and shell footprint not deducted.",
+      "ceiling_ft": 8
+    },
+    {
+      "id": "R04",
+      "name": "Fang’s office",
+      "kind": "Office",
+      "a": 108,
+      "b": 126,
+      "ri": 26.6,
+      "ro": 50,
+      "contents": "Desk and monitor close to the outer shell, with chair on the garden side facing the desk. Bookshelves follow the radial side wall and leave the window and doorway clear.",
+      "label": [
+        32,
+        117
+      ],
+      "notes": "",
+      "dimensions": {
+        "radial": 23.4,
+        "inner": 8.322313540140282,
+        "outer": 15.643446504023087
+      },
+      "gross_area_sqft": 281.5542285285188,
+      "area_sqft": 267.36177546742425,
+      "area_basis": "Approximate plan allocation less modeled partition footprint; includes low-headroom floor and door thresholds. Furniture and shell footprint not deducted.",
+      "ceiling_ft": 8
+    },
+    {
+      "id": "R05",
+      "name": "Jason’s office",
+      "kind": "Office",
+      "a": 54,
+      "b": 72,
+      "ri": 26.6,
+      "ro": 50,
+      "contents": "Desk and monitor close to the outer shell, with chair facing the desk. Bookshelves follow one radial wall. Recliner, extended footrest and a supported side table sit along the other radial wall, clear of the entrance.",
+      "label": [
+        30,
+        63
+      ],
+      "notes": "",
+      "dimensions": {
+        "radial": 23.4,
+        "inner": 8.322313540140282,
+        "outer": 15.643446504023087
+      },
+      "gross_area_sqft": 281.55422852851865,
+      "area_sqft": 267.36187094765296,
+      "area_basis": "Approximate plan allocation less modeled partition footprint; includes low-headroom floor and door thresholds. Furniture and shell footprint not deducted.",
+      "ceiling_ft": 8
+    },
+    {
+      "id": "R06",
+      "name": "Storage / future stairs",
+      "kind": "Storage and reserved space",
+      "a": 126,
+      "b": 144,
+      "ri": 26.6,
+      "ro": 50,
+      "contents": "Two heavy-duty shelving units, each 48 × 20 × 72 inches with five tiers, stand parallel to the two radial walls in the outer half. The center aisle and inner future-stair reservation remain open. This is one continuous room; the two floor names do not indicate a dividing wall.",
+      "label": [
+        33,
+        135
+      ],
+      "notes": "One continuous room; the two existing floor names do not indicate a dividing wall.",
+      "dimensions": {
+        "radial": 23.4,
+        "inner": 8.322313540140282,
+        "outer": 15.643446504023087
+      },
+      "gross_area_sqft": 281.55422852851905,
+      "area_sqft": 267.3618944306555,
+      "area_basis": "Approximate plan allocation less modeled partition footprint; includes low-headroom floor and door thresholds. Furniture and shell footprint not deducted.",
+      "ceiling_ft": 8
+    },
+    {
+      "id": "R07",
+      "name": "Freezer pantry",
+      "kind": "Pantry",
+      "a": 144,
+      "b": 162,
+      "ri": 26.6,
+      "ro": 38,
+      "contents": "Chest freezer parallel to the outer dividing wall, clear of its lid space. A five-tier shelving unit follows the opposite radial wall. The entrance from the kitchen and the center aisle remain open.",
+      "label": [
+        30,
+        153
+      ],
+      "notes": "",
+      "split": "inside",
+      "dimensions": {
+        "radial": 11.399999999999999,
+        "inner": 8.322313540140282,
+        "outer": 11.889019343057546
+      },
+      "gross_area_sqft": 111.96763200514735,
+      "area_sqft": 101.2830651180847,
+      "area_basis": "Approximate plan allocation less modeled partition footprint; includes low-headroom floor and door thresholds. Furniture and shell footprint not deducted.",
+      "ceiling_ft": 8
+    },
+    {
+      "id": "R08",
+      "name": "Kitchen pantry",
+      "kind": "Pantry",
+      "a": 144,
+      "b": 162,
+      "ri": 38,
+      "ro": 50,
+      "contents": "Two 48 × 20 × 72-inch five-tier shelving units line the radial wall opposite the kitchen doorway. The doorway wall, center aisle and exterior window remain clear.",
+      "label": [
+        40.5,
+        153
+      ],
+      "notes": "",
+      "split": "outside",
+      "dimensions": {
+        "radial": 12,
+        "inner": 11.889019343057546,
+        "outer": 15.643446504023087
+      },
+      "gross_area_sqft": 169.58659652337175,
+      "area_sqft": 160.67151589253464,
+      "area_basis": "Approximate plan allocation less modeled partition footprint; includes low-headroom floor and door thresholds. Furniture and shell footprint not deducted.",
+      "ceiling_ft": 8
+    },
+    {
+      "id": "R09",
+      "name": "Main utility closet",
+      "kind": "Utility",
+      "a": 18,
+      "b": 36,
+      "ri": 26.6,
+      "ro": 38,
+      "contents": "Hydronic module and air-handler/dehumidification allowances line the radial wall opposite the entrance. Consolidated hydronic manifolds sit against the outer dividing wall. The center service aisle and inner future-panel reservation remain open. Equipment and service clearances remain subject to product selection.",
+      "label": [
+        30,
+        27
+      ],
+      "notes": "",
+      "split": "inside",
+      "dimensions": {
+        "radial": 11.399999999999999,
+        "inner": 8.322313540140282,
+        "outer": 11.889019343057546
+      },
+      "gross_area_sqft": 111.9676320051473,
+      "area_sqft": 101.28306511808427,
+      "area_basis": "Approximate plan allocation less modeled partition footprint; includes low-headroom floor and door thresholds. Furniture and shell footprint not deducted.",
+      "ceiling_ft": 8
+    },
+    {
+      "id": "R10",
+      "name": "Laundry",
+      "kind": "Laundry",
+      "a": 18,
+      "b": 36,
+      "ri": 38,
+      "ro": 50,
+      "contents": "Washer and dryer near the outer shell, with laundry sink beside them. The supported 36-inch folding counter between dryer and sink is trimmed to meet the sink end with a small joint. A five-tier shelving unit follows the opposite radial wall, clear of the doorway. The dryer side-exhaust route remains provisional.",
+      "label": [
+        40.5,
+        27
+      ],
+      "notes": "",
+      "split": "outside",
+      "dimensions": {
+        "radial": 12,
+        "inner": 11.889019343057546,
+        "outer": 15.643446504023087
+      },
+      "gross_area_sqft": 169.58659652337172,
+      "area_sqft": 160.67151589253578,
+      "area_basis": "Approximate plan allocation less modeled partition footprint; includes low-headroom floor and door thresholds. Furniture and shell footprint not deducted.",
+      "ceiling_ft": 8
+    },
+    {
+      "id": "R11",
+      "name": "Game room",
+      "kind": "Game room",
+      "a": 36,
+      "b": 54,
+      "ri": 26.6,
+      "ro": 50,
+      "contents": "TV and console against one radial wall. Couch and extended recliner follow the opposite radial wall, facing the screen. The former study/flex dividing wall is gone; R12 and D26 remain retired. The center and hallway approach remain open.",
+      "label": [
+        31.3,
+        45
+      ],
+      "notes": "",
+      "split": null,
+      "dimensions": {
+        "radial": 23.4,
+        "inner": 8.322313540140282,
+        "outer": 15.643446504023087
+      },
+      "gross_area_sqft": 281.55422852851905,
+      "area_sqft": 267.36189443065547,
+      "area_basis": "Approximate plan allocation less modeled partition footprint; includes low-headroom floor and door thresholds. Furniture and shell footprint not deducted.",
+      "ceiling_ft": 8
+    },
+    {
+      "id": "R13",
+      "name": "West shared bathroom",
+      "kind": "Bathroom",
+      "a": 216,
+      "b": 234,
+      "ri": 38,
+      "ro": 50,
+      "contents": "Shower close to the outer curved shell. Toilet backs onto the kitchen-side radial wall; vanity and mirror follow the opposite side. The centered radial entrance D27 and its approach remain clear. Kitchen counters and stove sit on the other side of the bathroom wall.",
+      "label": [
+        39.8,
+        225.0
+      ],
+      "notes": "",
+      "split": "outside",
+      "dimensions": {
+        "radial": 12,
+        "inner": 11.889019343057546,
+        "outer": 15.643446504023087
+      },
+      "gross_area_sqft": 169.5865965233717,
+      "area_sqft": 160.67151589253504,
+      "area_basis": "Approximate plan allocation less modeled partition footprint; includes low-headroom floor and door thresholds. Furniture and shell footprint not deducted.",
+      "ceiling_ft": 8
+    },
+    {
+      "id": "R14",
+      "name": "East shared bathroom",
+      "kind": "Bathroom",
+      "a": 306,
+      "b": 324,
+      "ri": 38,
+      "ro": 50,
+      "contents": "Shower close to the outer curved shell. Toilet and vanity follow opposite radial walls. The centered radial entrance D28 and its approach remain clear.",
+      "label": [
+        39.8,
+        315.0
+      ],
+      "notes": "",
+      "split": "outside",
+      "dimensions": {
+        "radial": 12,
+        "inner": 11.889019343057546,
+        "outer": 15.643446504023087
+      },
+      "gross_area_sqft": 169.58659652337175,
+      "area_sqft": 160.67151589253592,
+      "area_basis": "Approximate plan allocation less modeled partition footprint; includes low-headroom floor and door thresholds. Furniture and shell footprint not deducted.",
+      "ceiling_ft": 8
+    },
+    {
+      "id": "R15",
+      "name": "Bedroom 1",
+      "kind": "Bedroom",
+      "a": 234,
+      "b": 252,
+      "ri": 35,
+      "ro": 50,
+      "contents": "Standard twin mattress (38 × 75 inches), with the bed along one radial wall and its head close to the outer shell. The bedside table stays with the bed. Desk and chair sit against the opposite wall. Both bedroom and closet openings remain clear. Eight-foot ceiling, recessed lighting and shared loft above.",
+      "label": [
+        39,
+        243
+      ],
+      "notes": "",
+      "dimensions": {
+        "radial": 15,
+        "inner": 10.95041255281616,
+        "outer": 15.643446504023087
+      },
+      "gross_area_sqft": 200.2754018956627,
+      "area_sqft": 190.80235266829726,
+      "area_basis": "Approximate plan allocation less modeled partition footprint; includes low-headroom floor and door thresholds. Furniture and shell footprint not deducted.",
+      "ceiling_ft": 8
+    },
+    {
+      "id": "R16",
+      "name": "Bedroom 1 entry",
+      "kind": "Private entry",
+      "a": 234,
+      "b": 243,
+      "ri": 26.6,
+      "ro": 35,
+      "contents": "Unfurnished passage connecting the shared hallway and bedroom; the door approaches stay clear. Eight-foot ceiling and recessed lighting, with shared loft above.",
+      "label": [
+        30,
+        238.5
+      ],
+      "notes": "",
+      "dimensions": {
+        "radial": 8.399999999999999,
+        "inner": 4.174023892721351,
+        "outer": 5.492136700949146
+      },
+      "gross_area_sqft": 40.63941331642811,
+      "area_sqft": 35.31247594681754,
+      "area_basis": "Approximate plan allocation less modeled partition footprint; includes low-headroom floor and door thresholds. Furniture and shell footprint not deducted.",
+      "ceiling_ft": 8
+    },
+    {
+      "id": "R17",
+      "name": "Bedroom 1 closet",
+      "kind": "Closet",
+      "a": 243,
+      "b": 252,
+      "ri": 26.6,
+      "ro": 35,
+      "contents": "Wire organizer along the outer-angle radial wall, with eight shelves, five rails and clothing/bin studies. The unit is set back from the bedroom-facing doorway to preserve its approach and the center aisle. Eight-foot ceiling and recessed lighting, with shared loft above.",
+      "label": [
+        28.2,
+        247.5
+      ],
+      "notes": "",
+      "dimensions": {
+        "radial": 8.399999999999999,
+        "inner": 4.174023892721351,
+        "outer": 5.492136700949146
+      },
+      "gross_area_sqft": 40.63941331642814,
+      "area_sqft": 34.48796324611095,
+      "area_basis": "Approximate plan allocation less modeled partition footprint; includes low-headroom floor and door thresholds. Furniture and shell footprint not deducted.",
+      "ceiling_ft": 8
+    },
+    {
+      "id": "R18",
+      "name": "Bedroom 2",
+      "kind": "Bedroom",
+      "a": 252,
+      "b": 270,
+      "ri": 35,
+      "ro": 50,
+      "contents": "Standard twin mattress (38 × 75 inches), with the bed along one radial wall and its head close to the outer shell. The bedside table stays with the bed. Desk and chair sit against the opposite wall. Both bedroom and closet openings remain clear. Eight-foot ceiling, recessed lighting and shared loft above.",
+      "label": [
+        39,
+        261
+      ],
+      "notes": "",
+      "dimensions": {
+        "radial": 15,
+        "inner": 10.95041255281616,
+        "outer": 15.643446504023087
+      },
+      "gross_area_sqft": 200.27540189566275,
+      "area_sqft": 190.80235266829789,
+      "area_basis": "Approximate plan allocation less modeled partition footprint; includes low-headroom floor and door thresholds. Furniture and shell footprint not deducted.",
+      "ceiling_ft": 8
+    },
+    {
+      "id": "R19",
+      "name": "Bedroom 2 entry",
+      "kind": "Private entry",
+      "a": 252,
+      "b": 261,
+      "ri": 26.6,
+      "ro": 35,
+      "contents": "Unfurnished passage connecting the shared hallway and bedroom; the door approaches stay clear. Eight-foot ceiling and recessed lighting, with shared loft above.",
+      "label": [
+        30,
+        256.5
+      ],
+      "notes": "",
+      "dimensions": {
+        "radial": 8.399999999999999,
+        "inner": 4.174023892721351,
+        "outer": 5.492136700949146
+      },
+      "gross_area_sqft": 40.63941331642811,
+      "area_sqft": 35.31254163981307,
+      "area_basis": "Approximate plan allocation less modeled partition footprint; includes low-headroom floor and door thresholds. Furniture and shell footprint not deducted.",
+      "ceiling_ft": 8
+    },
+    {
+      "id": "R20",
+      "name": "Bedroom 2 closet",
+      "kind": "Closet",
+      "a": 261,
+      "b": 270,
+      "ri": 26.6,
+      "ro": 35,
+      "contents": "Wire organizer along the outer-angle radial wall, with eight shelves, five rails and clothing/bin studies. The unit is set back from the bedroom-facing doorway to preserve its approach and the center aisle. Eight-foot ceiling and recessed lighting, with shared loft above.",
+      "label": [
+        28.2,
+        265.5
+      ],
+      "notes": "",
+      "dimensions": {
+        "radial": 8.399999999999999,
+        "inner": 4.174023892721351,
+        "outer": 5.492136700949146
+      },
+      "gross_area_sqft": 40.63941331642812,
+      "area_sqft": 34.487963246111086,
+      "area_basis": "Approximate plan allocation less modeled partition footprint; includes low-headroom floor and door thresholds. Furniture and shell footprint not deducted.",
+      "ceiling_ft": 8
+    },
+    {
+      "id": "R21",
+      "name": "Bedroom 3",
+      "kind": "Bedroom",
+      "a": 270,
+      "b": 288,
+      "ri": 35,
+      "ro": 50,
+      "contents": "Standard twin mattress (38 × 75 inches), with the bed along one radial wall and its head close to the outer shell. The bedside table stays with the bed. Desk and chair sit against the opposite wall. Both bedroom and closet openings remain clear. Eight-foot ceiling, recessed lighting and shared loft above.",
+      "label": [
+        39,
+        279
+      ],
+      "notes": "",
+      "dimensions": {
+        "radial": 15,
+        "inner": 10.95041255281616,
+        "outer": 15.643446504023087
+      },
+      "gross_area_sqft": 200.27540189566264,
+      "area_sqft": 190.80235266829774,
+      "area_basis": "Approximate plan allocation less modeled partition footprint; includes low-headroom floor and door thresholds. Furniture and shell footprint not deducted.",
+      "ceiling_ft": 8
+    },
+    {
+      "id": "R22",
+      "name": "Bedroom 3 entry",
+      "kind": "Private entry",
+      "a": 270,
+      "b": 279,
+      "ri": 26.6,
+      "ro": 35,
+      "contents": "Unfurnished passage connecting the shared hallway and bedroom; the door approaches stay clear. Eight-foot ceiling and recessed lighting, with shared loft above.",
+      "label": [
+        30,
+        274.5
+      ],
+      "notes": "",
+      "dimensions": {
+        "radial": 8.399999999999999,
+        "inner": 4.174023892721351,
+        "outer": 5.492136700949146
+      },
+      "gross_area_sqft": 40.63941331642813,
+      "area_sqft": 35.312541639812736,
+      "area_basis": "Approximate plan allocation less modeled partition footprint; includes low-headroom floor and door thresholds. Furniture and shell footprint not deducted.",
+      "ceiling_ft": 8
+    },
+    {
+      "id": "R23",
+      "name": "Bedroom 3 closet",
+      "kind": "Closet",
+      "a": 279,
+      "b": 288,
+      "ri": 26.6,
+      "ro": 35,
+      "contents": "Wire organizer along the outer-angle radial wall, with eight shelves, five rails and clothing/bin studies. The unit is set back from the bedroom-facing doorway to preserve its approach and the center aisle. Eight-foot ceiling and recessed lighting, with shared loft above.",
+      "label": [
+        28.2,
+        283.5
+      ],
+      "notes": "",
+      "dimensions": {
+        "radial": 8.399999999999999,
+        "inner": 4.174023892721351,
+        "outer": 5.492136700949146
+      },
+      "gross_area_sqft": 40.639413316428126,
+      "area_sqft": 34.48796324611119,
+      "area_basis": "Approximate plan allocation less modeled partition footprint; includes low-headroom floor and door thresholds. Furniture and shell footprint not deducted.",
+      "ceiling_ft": 8
+    },
+    {
+      "id": "R24",
+      "name": "Bedroom 4",
+      "kind": "Bedroom",
+      "a": 288,
+      "b": 306,
+      "ri": 35,
+      "ro": 50,
+      "contents": "Standard twin mattress (38 × 75 inches), with the bed along one radial wall and its head close to the outer shell. The bedside table stays with the bed. Desk and chair sit against the opposite wall. Both bedroom and closet openings remain clear. Eight-foot ceiling, recessed lighting and shared loft above.",
+      "label": [
+        39,
+        297
+      ],
+      "notes": "",
+      "dimensions": {
+        "radial": 15,
+        "inner": 10.95041255281616,
+        "outer": 15.643446504023087
+      },
+      "gross_area_sqft": 200.27540189566278,
+      "area_sqft": 190.80235266829698,
+      "area_basis": "Approximate plan allocation less modeled partition footprint; includes low-headroom floor and door thresholds. Furniture and shell footprint not deducted.",
+      "ceiling_ft": 8
+    },
+    {
+      "id": "R25",
+      "name": "Bedroom 4 entry",
+      "kind": "Private entry",
+      "a": 288,
+      "b": 297,
+      "ri": 26.6,
+      "ro": 35,
+      "contents": "Unfurnished passage connecting the shared hallway and bedroom; the door approaches stay clear. Eight-foot ceiling and recessed lighting, with shared loft above.",
+      "label": [
+        30,
+        292.5
+      ],
+      "notes": "",
+      "dimensions": {
+        "radial": 8.399999999999999,
+        "inner": 4.174023892721351,
+        "outer": 5.492136700949146
+      },
+      "gross_area_sqft": 40.63941331642813,
+      "area_sqft": 35.31255105131571,
+      "area_basis": "Approximate plan allocation less modeled partition footprint; includes low-headroom floor and door thresholds. Furniture and shell footprint not deducted.",
+      "ceiling_ft": 8
+    },
+    {
+      "id": "R26",
+      "name": "Bedroom 4 closet",
+      "kind": "Closet",
+      "a": 297,
+      "b": 306,
+      "ri": 26.6,
+      "ro": 35,
+      "contents": "Wire organizer along the outer-angle radial wall, with eight shelves, five rails and clothing/bin studies. The unit is set back from the bedroom-facing doorway to preserve its approach and the center aisle. Eight-foot ceiling and recessed lighting, with shared loft above.",
+      "label": [
+        28.2,
+        301.5
+      ],
+      "notes": "",
+      "dimensions": {
+        "radial": 8.399999999999999,
+        "inner": 4.174023892721351,
+        "outer": 5.492136700949146
+      },
+      "gross_area_sqft": 40.63941331642812,
+      "area_sqft": 34.48775897649849,
+      "area_basis": "Approximate plan allocation less modeled partition footprint; includes low-headroom floor and door thresholds. Furniture and shell footprint not deducted.",
+      "ceiling_ft": 8
+    },
+    {
+      "id": "R27",
+      "name": "West entry / kitchen / dining",
+      "kind": "Open shared room",
+      "a": 162,
+      "b": 216,
+      "ri": 26.6,
+      "ro": 50,
+      "contents": "Continuous 36-inch-high counter follows the outer shell and turns along the kitchen side of bathroom R13. The sink and dishwasher remain on the outer run; the stove, oven and aligned hood occupy the R13-side run. Four burner outlines sit directly on the cooktop. Refrigerator stays near the exterior entrance. The island and all three stools are removed. A 3.5 × 8-foot table with six chairs facing it sits in the open former-island area, centered about radius 35.5 feet and angle 201°. Work aisles, pantry doors and the exterior-to-garden route stay open. Outside the garden slider, a separate curved-back canopy with a straight front chord shades the approach. Toggle it with Door canopies & drains.",
+      "label": [
+        33,
+        193
+      ],
+      "notes": "One open room with three named zones, not three enclosed rooms. The shared bathroom R13 cuts into its southeast end. Dimension envelope: inner and outer chords span the whole open room; one end runs 30 feet, the dining end has a 12-foot bathroom notch and a 12-foot outer segment. Circulation R29 overlaps its inner 6-foot strip.",
+      "dimensions": {
+        "radial": 23.4,
+        "inner": 24.152294586143892,
+        "outer": 45.39904997395468
+      },
+      "gross_area_sqft": 844.6626855855566,
+      "area_sqft": 836.5719166587356,
+      "area_basis": "Approximate plan allocation less modeled partition footprint; includes low-headroom floor and door thresholds. Furniture and shell footprint not deducted.",
+      "ceiling_ft": null
+    },
+    {
+      "id": "R28",
+      "name": "East entry / living room",
+      "kind": "Open shared room",
+      "a": 324,
+      "b": 378,
+      "ri": 26.6,
+      "ro": 50,
+      "contents": "A sofa follows the bathroom-side radial wall, with a second sofa facing it and a supported coffee table between them. This conversation group occupies the south side of the living area, leaving the entrance and garden-door route open. The TV remains in R11 Game room. Outside the garden slider, a separate curved-back canopy with a straight front chord shades the approach. Toggle it with Door canopies & drains.",
+      "label": [
+        32,
+        346
+      ],
+      "notes": "One open room with three named zones. The shared bathroom R14 cuts into its southwest end. Dimension envelope: inner and outer chords span the whole open room; one end runs 30 feet, the TV end has a 12-foot bathroom notch and a 12-foot outer segment. Circulation R29 overlaps its inner 6-foot strip.",
+      "dimensions": {
+        "radial": 23.4,
+        "inner": 24.152294586143892,
+        "outer": 45.39904997395468
+      },
+      "gross_area_sqft": 844.662685585557,
+      "area_sqft": 836.571916658735,
+      "area_basis": "Approximate plan allocation less modeled partition footprint; includes low-headroom floor and door thresholds. Furniture and shell footprint not deducted.",
+      "ceiling_ft": null
+    },
+    {
+      "id": "R29",
+      "name": "Garden hallway",
+      "kind": "Circulation",
+      "a": 0,
+      "b": 360,
+      "ri": 20,
+      "ro": 26.6,
+      "contents": "Continuous garden hallway, six feet clear near the floor. The inner shell has been rebuilt with just five48-inch-square sliding windows: three evenly spaced on the longer north arc and two on the shorter south arc. Sills are36inches. Open kitchen/living connections and their outward-projecting four-panel garden sliders remain.",
+      "label": [
+        23,
+        81
+      ],
+      "notes": "6 feet wide. No single corner-to-corner chord around a complete circle. Inner diameter 40 feet; outer diameter 52 feet.",
+      "gross_area_sqft": 966.2227859926253,
+      "area_sqft": 946.1653737524762,
+      "area_basis": "Approximate plan allocation less modeled partition footprint; includes low-headroom floor and door thresholds. Furniture and shell footprint not deducted.",
+      "ceiling_ft": null
+    },
+    {
+      "id": "R30",
+      "name": "Courtyard garden",
+      "kind": "Outdoor garden",
+      "a": 0,
+      "b": 360,
+      "ri": 0,
+      "ro": 14,
+      "contents": "28-foot-diameter planted circle; no radial walls or wall chords.\n\nSmall rectangular pool west of center; two trees northeast and southwest of center; low planting areas.",
+      "label": [
+        7,
+        95
+      ],
+      "notes": "28-foot-diameter planted circle; no radial walls or wall chords.",
+      "gross_area_sqft": 615.7486866125466,
+      "area_sqft": 615.7486866125466,
+      "area_basis": "Approximate plan allocation less modeled partition footprint; includes low-headroom floor and door thresholds. Furniture and shell footprint not deducted.",
+      "ceiling_ft": null
+    },
+    {
+      "id": "R31",
+      "name": "Garden walkway",
+      "kind": "Outdoor circulation",
+      "a": 0,
+      "b": 360,
+      "ri": 14,
+      "ro": 20,
+      "contents": "Six-foot-wide garden walkway, radii 14–20 feet. By default, two 22-foot-wide curved-back canopies shelter the garden doors at D31 (living room) and D32 (kitchen). Their straight front edges are parallel to the doors and reach the walkway’s inner edge at the center. Roof tops slope from 10 feet 10 inches at the dome to 10 feet 4 inches at the front. The north and south walkway arcs remain open to the sky. Each canopy and its adjacent unshaded inner-rim gutter drain to a left-corner downspout, viewed from inside the room. The previous five-pole ring awning, canvas, cables, hardware and both circular gutter rims are preserved as an independent option, OFF by default.",
+      "label": [
+        18.5,
+        270
+      ],
+      "notes": "6 feet wide; inner diameter 28 feet, outer diameter 40 feet. No corner-to-corner wall chords.",
+      "gross_area_sqft": 640.8812860661208,
+      "area_sqft": 640.8812860661208,
+      "area_basis": "Approximate plan allocation less modeled partition footprint; includes low-headroom floor and door thresholds. Furniture and shell footprint not deducted.",
+      "ceiling_ft": null
+    },
+    {
+      "id": "R32",
+      "name": "Outside walkway",
+      "kind": "Outdoor circulation",
+      "a": 0,
+      "b": 360,
+      "ri": 50,
+      "ro": 56,
+      "contents": "Six-foot concrete outer walkway around the house. Exterior entrance screen doors and tapered projecting windows remain. The five outer circular gutter segments and five outer downspouts belong to the old ring-awning assembly and are OFF by default. The new door-canopy drainage option serves the courtyard rim only; it does not replace outer-rim drainage.",
+      "label": [
+        53,
+        0
+      ],
+      "notes": "6 feet wide; inner diameter 100 feet, outer diameter 112 feet. No corner-to-corner wall chords.",
+      "gross_area_sqft": 1998.0416565590947,
+      "area_sqft": 1998.0416565590947,
+      "area_basis": "Approximate plan allocation less modeled partition footprint; includes low-headroom floor and door thresholds. Furniture and shell footprint not deducted.",
+      "ceiling_ft": null
+    },
+    {
+      "id": "R33",
+      "name": "West reading nook",
+      "kind": "Open reading area",
+      "ri": 26.6,
+      "ro": 38,
+      "a": 216,
+      "b": 234,
+      "split": "inside",
+      "label": [
+        31.8,
+        225
+      ],
+      "notes": "Open to hallway and social area; radial-wall bookcases.",
+      "contents": "Two bookcases follow the radial wall, with an open center and clear approach to bathroom D27.",
+      "gross_area_sqft": 111.9676320051473,
+      "area_sqft": 106.48268609589346,
+      "area_basis": "Approximate plan allocation less modeled partition footprint; includes low-headroom floor and door thresholds. Furniture and shell footprint not deducted.",
+      "dimensions": {
+        "radial": 11.399999999999999,
+        "inner": 8.322313540140282,
+        "outer": 11.889019343057546
+      },
+      "ceiling_ft": null
+    },
+    {
+      "id": "R34",
+      "name": "East reading nook",
+      "kind": "Open reading area",
+      "ri": 26.6,
+      "ro": 38,
+      "a": 306,
+      "b": 324,
+      "split": "inside",
+      "label": [
+        31.8,
+        315
+      ],
+      "notes": "Open to hallway and social area; radial-wall bookcases.",
+      "contents": "Two bookcases follow the radial wall, with an open center and clear approach to bathroom D28.",
+      "gross_area_sqft": 111.96763200514731,
+      "area_sqft": 106.48268609589364,
+      "area_basis": "Approximate plan allocation less modeled partition footprint; includes low-headroom floor and door thresholds. Furniture and shell footprint not deducted.",
+      "dimensions": {
+        "radial": 11.399999999999999,
+        "inner": 8.322313540140282,
+        "outer": 11.889019343057546
+      },
+      "ceiling_ft": null
+    },
+    {
+      "id": "R35",
+      "name": "Orchard grounds",
+      "kind": "Outdoor grounds",
+      "shape": "square_outside_disk",
+      "ri": 56,
+      "ro": 148,
+      "a": 0,
+      "b": 360,
+      "label": [
+        70,
+        90
+      ],
+      "notes": "Square-acre property excluding the house and outer walkway; two study trees of each specified species.",
+      "contents": "Orange, lemon, kumquat, apple, pear, peach, cherry and persimmon trees; two of each around the outside of the house. Cultivars and irrigation remain undecided.",
+      "gross_area_sqft": 33707.99669978503,
+      "area_sqft": 33707.99669978503,
+      "area_basis": "Approximate plan allocation less modeled partition footprint; includes low-headroom floor and door thresholds. Furniture and shell footprint not deducted.",
+      "ceiling_ft": null
+    }
+  ],
+  "doors": [
+    {
+      "id": "D01",
+      "a": 99,
+      "r": 26.6,
+      "connects": [
+        "R29",
+        "R01"
+      ],
+      "kind": "Framed opening",
+      "width": "36-inch model gap before frames; final leaf size unresolved",
+      "label": [
+        26.6,
+        99
+      ],
+      "status": "open"
+    },
+    {
+      "id": "D02",
+      "a": 117,
+      "r": 26.6,
+      "connects": [
+        "R29",
+        "R04"
+      ],
+      "kind": "Framed opening",
+      "width": "36-inch model gap before frames; final leaf size unresolved",
+      "label": [
+        26.6,
+        117
+      ],
+      "status": "open"
+    },
+    {
+      "id": "D03",
+      "a": 135,
+      "r": 26.6,
+      "connects": [
+        "R29",
+        "R06"
+      ],
+      "kind": "Framed opening",
+      "width": "36-inch model gap before frames; final leaf size unresolved",
+      "label": [
+        26.6,
+        135
+      ],
+      "status": "open"
+    },
+    {
+      "id": "D04",
+      "a": 63,
+      "r": 26.6,
+      "connects": [
+        "R29",
+        "R05"
+      ],
+      "kind": "Framed opening",
+      "width": "36-inch model gap before frames; final leaf size unresolved",
+      "label": [
+        26.6,
+        63
+      ],
+      "status": "open"
+    },
+    {
+      "id": "D05",
+      "a": 45,
+      "r": 26.6,
+      "connects": [
+        "R29",
+        "R11"
+      ],
+      "kind": "Framed opening",
+      "width": "36-inch model gap before frames; final leaf size unresolved",
+      "label": [
+        26.6,
+        45
+      ],
+      "status": "open"
+    },
+    {
+      "id": "D06",
+      "a": 225,
+      "r": 26.6,
+      "connects": [
+        "R29",
+        "R13"
+      ],
+      "kind": "Former doorway replaced by open nook connection",
+      "width": "No door",
+      "label": [
+        26.6,
+        225
+      ],
+      "status": "closed"
+    },
+    {
+      "id": "D07",
+      "a": 315,
+      "r": 26.6,
+      "connects": [
+        "R29",
+        "R14"
+      ],
+      "kind": "Former doorway replaced by open nook connection",
+      "width": "No door",
+      "label": [
+        26.6,
+        315
+      ],
+      "status": "closed"
+    },
+    {
+      "id": "D08",
+      "a": 238.5,
+      "r": 26.6,
+      "connects": [
+        "R29",
+        "R16"
+      ],
+      "kind": "Framed opening",
+      "width": "36-inch model gap before frames; final leaf size unresolved",
+      "label": [
+        26.6,
+        238.5
+      ],
+      "status": "open"
+    },
+    {
+      "id": "D09",
+      "a": 238.5,
+      "r": 35,
+      "connects": [
+        "R16",
+        "R15"
+      ],
+      "kind": "Framed opening",
+      "width": "36-inch model gap before frames; final leaf size unresolved",
+      "label": [
+        35,
+        238.5
+      ],
+      "status": "open"
+    },
+    {
+      "id": "D10",
+      "a": 247.5,
+      "r": 35,
+      "connects": [
+        "R17",
+        "R15"
+      ],
+      "kind": "Framed opening",
+      "width": "36-inch model gap before frames; final leaf size unresolved",
+      "label": [
+        35,
+        247.5
+      ],
+      "status": "open"
+    },
+    {
+      "id": "D11",
+      "a": 256.5,
+      "r": 26.6,
+      "connects": [
+        "R29",
+        "R19"
+      ],
+      "kind": "Framed opening",
+      "width": "36-inch model gap before frames; final leaf size unresolved",
+      "label": [
+        26.6,
+        256.5
+      ],
+      "status": "open"
+    },
+    {
+      "id": "D12",
+      "a": 256.5,
+      "r": 35,
+      "connects": [
+        "R19",
+        "R18"
+      ],
+      "kind": "Framed opening",
+      "width": "36-inch model gap before frames; final leaf size unresolved",
+      "label": [
+        35,
+        256.5
+      ],
+      "status": "open"
+    },
+    {
+      "id": "D13",
+      "a": 265.5,
+      "r": 35,
+      "connects": [
+        "R20",
+        "R18"
+      ],
+      "kind": "Framed opening",
+      "width": "36-inch model gap before frames; final leaf size unresolved",
+      "label": [
+        35,
+        265.5
+      ],
+      "status": "open"
+    },
+    {
+      "id": "D14",
+      "a": 274.5,
+      "r": 26.6,
+      "connects": [
+        "R29",
+        "R22"
+      ],
+      "kind": "Framed opening",
+      "width": "36-inch model gap before frames; final leaf size unresolved",
+      "label": [
+        26.6,
+        274.5
+      ],
+      "status": "open"
+    },
+    {
+      "id": "D15",
+      "a": 274.5,
+      "r": 35,
+      "connects": [
+        "R22",
+        "R21"
+      ],
+      "kind": "Framed opening",
+      "width": "36-inch model gap before frames; final leaf size unresolved",
+      "label": [
+        35,
+        274.5
+      ],
+      "status": "open"
+    },
+    {
+      "id": "D16",
+      "a": 283.5,
+      "r": 35,
+      "connects": [
+        "R23",
+        "R21"
+      ],
+      "kind": "Framed opening",
+      "width": "36-inch model gap before frames; final leaf size unresolved",
+      "label": [
+        35,
+        283.5
+      ],
+      "status": "open"
+    },
+    {
+      "id": "D17",
+      "a": 292.5,
+      "r": 26.6,
+      "connects": [
+        "R29",
+        "R25"
+      ],
+      "kind": "Framed opening",
+      "width": "36-inch model gap before frames; final leaf size unresolved",
+      "label": [
+        26.6,
+        292.5
+      ],
+      "status": "open"
+    },
+    {
+      "id": "D18",
+      "a": 292.5,
+      "r": 35,
+      "connects": [
+        "R25",
+        "R24"
+      ],
+      "kind": "Framed opening",
+      "width": "36-inch model gap before frames; final leaf size unresolved",
+      "label": [
+        35,
+        292.5
+      ],
+      "status": "open"
+    },
+    {
+      "id": "D19",
+      "a": 301.5,
+      "r": 35,
+      "connects": [
+        "R26",
+        "R24"
+      ],
+      "kind": "Framed opening",
+      "width": "36-inch model gap before frames; final leaf size unresolved",
+      "label": [
+        35,
+        301.5
+      ],
+      "status": "open"
+    },
+    {
+      "id": "D20",
+      "a": 90,
+      "r": 32,
+      "connects": [
+        "R01",
+        "R02"
+      ],
+      "kind": "Open oak door leaf",
+      "width": "36-inch model gap before frames; final leaf size unresolved",
+      "label": [
+        32,
+        90
+      ],
+      "status": "open"
+    },
+    {
+      "id": "D21",
+      "a": 90,
+      "r": 42,
+      "connects": [
+        "R01",
+        "R03"
+      ],
+      "kind": "Open oak door leaf",
+      "width": "36-inch model gap before frames; final leaf size unresolved",
+      "label": [
+        42,
+        90
+      ],
+      "status": "open"
+    },
+    {
+      "id": "D22",
+      "a": 162,
+      "r": 32,
+      "connects": [
+        "R27",
+        "R07"
+      ],
+      "kind": "Open oak door leaf",
+      "width": "36-inch model gap before frames; final leaf size unresolved",
+      "label": [
+        32,
+        162
+      ],
+      "status": "open"
+    },
+    {
+      "id": "D23",
+      "a": 162,
+      "r": 43,
+      "connects": [
+        "R27",
+        "R08"
+      ],
+      "kind": "Open oak door leaf",
+      "width": "36-inch model gap before frames; final leaf size unresolved",
+      "label": [
+        43,
+        162
+      ],
+      "status": "open"
+    },
+    {
+      "id": "D24",
+      "a": 18,
+      "r": 32,
+      "connects": [
+        "R28",
+        "R09"
+      ],
+      "kind": "Open oak door leaf",
+      "width": "36-inch model gap before frames; final leaf size unresolved",
+      "label": [
+        32,
+        18
+      ],
+      "status": "open"
+    },
+    {
+      "id": "D25",
+      "a": 18,
+      "r": 43,
+      "connects": [
+        "R28",
+        "R10"
+      ],
+      "kind": "Open oak door leaf",
+      "width": "36-inch model gap before frames; final leaf size unresolved",
+      "label": [
+        43,
+        18
+      ],
+      "status": "open"
+    },
+    {
+      "id": "D26",
+      "a": 45,
+      "r": 37.53215694261524,
+      "connects": [
+        "R11",
+        "R12"
+      ],
+      "kind": "Retired — R11 and R12 combined into game room R11",
+      "width": "No dividing wall or door",
+      "label": [
+        37.53215694261524,
+        45
+      ],
+      "status": "closed"
+    },
+    {
+      "id": "D27",
+      "a": 225,
+      "r": 37.53215694261524,
+      "connects": [
+        "R13",
+        "R33"
+      ],
+      "kind": "Single outer bathroom entrance",
+      "width": "36-inch model gap before frames; final leaf size unresolved",
+      "label": [
+        37.53215694261524,
+        225
+      ],
+      "status": "open"
+    },
+    {
+      "id": "D28",
+      "a": 315,
+      "r": 37.53215694261524,
+      "connects": [
+        "R14",
+        "R34"
+      ],
+      "kind": "Single outer bathroom entrance",
+      "width": "36-inch model gap before frames; final leaf size unresolved",
+      "label": [
+        37.53215694261524,
+        315
+      ],
+      "status": "open"
+    },
+    {
+      "id": "D29",
+      "a": 0,
+      "r": 49.55,
+      "connects": [
+        "R28",
+        "R32"
+      ],
+      "kind": "36-inch exterior door with metal screen door, shown open",
+      "width": "36-inch leaf; frame/rough-opening study",
+      "label": [
+        49.55,
+        0
+      ],
+      "status": "open"
+    },
+    {
+      "id": "D30",
+      "a": 180,
+      "r": 49.55,
+      "connects": [
+        "R27",
+        "R32"
+      ],
+      "kind": "36-inch exterior door with metal screen door, shown open",
+      "width": "36-inch leaf; frame/rough-opening study",
+      "label": [
+        49.55,
+        180
+      ],
+      "status": "open"
+    },
+    {
+      "id": "D31",
+      "a": 351,
+      "r": 19.02113032590307,
+      "connects": [
+        "R28",
+        "R31"
+      ],
+      "kind": "Four-panel double sliding garden door, center pair shown open",
+      "width": "12 ft overall; about 5.8 ft central passage (provisional)",
+      "label": [
+        19.02113032590307,
+        351
+      ],
+      "status": "open"
+    },
+    {
+      "id": "D32",
+      "a": 189,
+      "r": 19.02113032590307,
+      "connects": [
+        "R27",
+        "R31"
+      ],
+      "kind": "Four-panel double sliding garden door, center pair shown open",
+      "width": "12 ft overall; about 5.8 ft central passage (provisional)",
+      "label": [
+        19.02113032590307,
+        189
+      ],
+      "status": "open"
+    }
+  ],
+  "hallway": {
+    "wall_center_ft": 26.6,
+    "partition_thickness_ft": 0.55,
+    "floor_target_ft": 6,
+    "headroom_note": "Six-foot target applies at floor, not head height."
+  },
+  "area_basis": "Approximate plan allocation less modeled partition footprint; includes low-headroom floor and door thresholds. Furniture and shell footprint not deducted.",
+  "retired_rooms": {
+    "R12": "Merged into game room R11"
+  },
+  "window_standard": {
+    "width_inches": 48,
+    "height_inches": 48,
+    "sill_inches": 36,
+    "operation": "horizontal sliding"
+  },
+  "lighting": "Walkthrough: global environment, hemisphere and interior fill. Blender: sunlight, recessed fixtures and LED strips only."
+}

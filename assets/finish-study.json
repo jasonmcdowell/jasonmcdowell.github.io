@@ -1,0 +1,18 @@
+{
+  "provisional": true,
+  "penrose_algorithm": "pynrose 1.0.1 de Bruijn pentagrid P3 rhombs",
+  "source": "https://pynrose.readthedocs.io/en/latest/",
+  "rhombs": 62183,
+  "tile_edge_ft": 0.5,
+  "uv_surface_span_ft": [
+    220,
+    55
+  ],
+  "note": "Planar pattern projected over torus; seam and curved-surface tile cuts/attachment unresolved. No structural or waterproof function.",
+  "rhombs_count_scope": "All generated motifs including off-image margins",
+  "shell_mapping_motifs": {
+    "penrose": 55845,
+    "stone": 26667
+  },
+  "counts_note": "Visual pattern counts, not fabrication or purchase quantities; see finish-counts.json."
+}

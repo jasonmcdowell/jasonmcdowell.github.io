@@ -1,0 +1,29 @@
+{
+  "version": "v07 documentation of unchanged v06 finishes",
+  "penrose": {
+    "generated": 62183,
+    "in_texture": 60330,
+    "visible_on_shell": 55845,
+    "edge_or_opening_clipped_motifs": 2821,
+    "complete_motifs": 53024
+  },
+  "stone": {
+    "generated": 28814,
+    "in_texture": 28618,
+    "visible_on_shell": 26667,
+    "edge_or_opening_clipped_motifs": 841,
+    "complete_motifs": 25826
+  },
+  "individual_piece_meshes": 0,
+  "optional_finish_meshes": 2,
+  "uv_rectangle_ft": [
+    220,
+    55
+  ],
+  "occupied_uv_area_fraction": 0.9146321322847941,
+  "method": "Recreate the original seeded pattern polygons without saving textures; count positive-area intersections with the union of the current finish mesh UV faces, wrapping the seam into 0\u20131. Counts describe visible artwork motifs. Cut fragments, mortar, distortion, fabrication subdivisions and waste are not separate installed pieces.",
+  "sha256": {
+    "flat-stone-study.jpg": "a256b5d9e28e406d1fea3f6e51662e02853430d872d232da8611f9fc4cef7ef8",
+    "penrose-p3-study.jpg": "2965ebad24c4d4408b8693ee8b9ace8a4ec1c8879ff6114ae4c8012d50b8cda4"
+  }
+}
