@@ -12,6 +12,8 @@ const RADIUS = (11 / 12) * FT;
 const testing = new URLSearchParams(location.search).get('test') === '1';
 const viewRenderEnabled = window.DREAM_HOME_VIEW_RENDER_ENABLED !== false;
 if (!viewRenderEnabled) document.body.classList.add('view-render-disabled');
+const hasTouchHardware = navigator.maxTouchPoints > 0 || 'ontouchstart' in window;
+const mobileLike = hasTouchHardware || Math.min(innerWidth, innerHeight) <= 600;
 const GAMEPAD_DEADZONE = 0.16;
 const GAMEPAD_LOOK_SPEED = 2.6;
 const GAMEPAD_DOUBLE_TAP_MS = 280;
@@ -28,12 +30,13 @@ const STARTING_PLACE = 'living';
 // around costs extra GPU/framebuffer memory and is not needed for gameplay.
 const renderer = new THREE.WebGLRenderer({
   canvas,
-  antialias: true,
+  antialias: !mobileLike,
+  powerPreference: mobileLike ? 'low-power' : 'high-performance',
 });
 
-renderer.setPixelRatio(Math.min(devicePixelRatio, 1.5));
+renderer.setPixelRatio(Math.min(devicePixelRatio, mobileLike ? 1 : 1.5));
 renderer.setSize(innerWidth, innerHeight);
-renderer.shadowMap.enabled = true;
+renderer.shadowMap.enabled = !mobileLike;
 renderer.shadowMap.type = THREE.PCFSoftShadowMap;
 renderer.toneMapping = THREE.ACESFilmicToneMapping;
 renderer.toneMappingExposure = 1.25;
@@ -106,20 +109,27 @@ let fireballCooldown = 0;
 const camera = new THREE.PerspectiveCamera(55, innerWidth / innerHeight, 0.04, 220);
 camera.rotation.order = 'YXZ';
 
-const pmrem = new THREE.PMREMGenerator(renderer);
-const env = new RoomEnvironment();
-scene.environment = pmrem.fromScene(env, 0.04).texture;
-scene.environmentIntensity = 0.32;
-env.dispose();
-pmrem.dispose();
+if (!mobileLike) {
+  const pmrem = new THREE.PMREMGenerator(renderer);
+  const env = new RoomEnvironment();
+  scene.environment = pmrem.fromScene(env, 0.04).texture;
+  scene.environmentIntensity = 0.32;
+  env.dispose();
+  pmrem.dispose();
+} else {
+  // Keep mobile startup within a smaller GPU budget. The hemisphere and sun
+  // lights below provide a readable fallback without a PMREM environment.
+  scene.environment = null;
+  scene.environmentIntensity = 0;
+}
 
-const hemisphere = new THREE.HemisphereLight(0xe4f0ff, 0xa09b7f, 2.1);
+const hemisphere = new THREE.HemisphereLight(0xe4f0ff, 0xa09b7f, mobileLike ? 2.5 : 2.1);
 scene.add(hemisphere);
 
-const sun = new THREE.DirectionalLight(0xfff0d3, 3.2);
+const sun = new THREE.DirectionalLight(0xfff0d3, mobileLike ? 2.6 : 3.2);
 sun.position.set(-14, 30, 12);
-sun.castShadow = true;
-sun.shadow.mapSize.set(2048, 2048);
+sun.castShadow = !mobileLike;
+if (!mobileLike) sun.shadow.mapSize.set(2048, 2048);
 Object.assign(sun.shadow.camera, {
   left: -21,
   right: 21,
@@ -133,7 +143,7 @@ sun.shadow.bias = -0.00008;
 scene.add(sun);
 
 // Gentle interior fill approximates bounced light that the real-time renderer does not calculate.
-for (let i = 0; i < 6; i++) {
+for (let i = 0; i < (mobileLike ? 2 : 6); i++) {
   const a = i * Math.PI / 3;
   const l = new THREE.PointLight(0xffefd8, 30, 14, 2);
   l.position.set(9 * Math.cos(a), 3, 9 * Math.sin(a));
@@ -158,7 +168,7 @@ const COLLISION_MAP_LABELS = {
   base: 'floor & shell',
   interior: 'room partitions',
   furniture: 'furniture & equipment',
-  roof: 'outer roof',
+  roof: 'simplified outer roof',
   interior_roof: 'interior ceilings',
   ring_awning: 'ring awning',
   door_canopies: 'door canopies',
@@ -193,6 +203,8 @@ let roofCutaway = false;
 let cutawayDropThrough = false;
 
 const ROOF_CUTAWAY_HEIGHT = (7 + 11 / 12) * FT;
+const ROOF_COLLISION_AZIMUTH_SEGMENTS = 120;
+const ROOF_COLLISION_PROFILE_SEGMENTS = 24;
 const roofCutawayPlane = new THREE.Plane(new THREE.Vector3(0, -1, 0), ROOF_CUTAWAY_HEIGHT);
 
 function refreshActiveCollisionWorlds() {
@@ -319,7 +331,6 @@ let gamepadRunHeld = false;
 let lastForwardTap = -Infinity;
 let lastGamepadForwardTap = -Infinity;
 let gamepadForwardHeld = false;
-const hasTouchHardware = navigator.maxTouchPoints > 0 || 'ontouchstart' in window;
 const touchInput = { forward: 0, strafe: 0, jumpHeld: false, jumpPressed: false, descendHeld: false };
 let touchMovePointerId = null;
 let touchLookPointerId = null;
@@ -340,6 +351,7 @@ let roofCutawayMaterials = [];
 let viewTools;
 let triangleCount = 0;
 let totalCollisionTriangles = 0;
+let sourceCollisionTriangles = 0;
 let collisionChunksIndexed = 0;
 let collisionProgressHideTimer = null;
 let lastHit = null;
@@ -594,10 +606,10 @@ function updateCollisionProgress(processed, total, phase, complete = false) {
   const percent = complete ? 100 : Math.min(99.9, count / total * 100);
   bar.value = percent;
   label.textContent = complete
-    ? `Collision maps ready · ${total.toLocaleString()} triangles`
+    ? `Collision maps ready · ${total.toLocaleString()} triangles (${sourceCollisionTriangles.toLocaleString()} source)`
     : `${phase} · ${collisionChunksIndexed} batches · ${count.toLocaleString()} / ${total.toLocaleString()} (${percent.toFixed(1)}%)`;
   bar.setAttribute('aria-valuetext', complete
-    ? `All ${total.toLocaleString()} collision triangles indexed`
+    ? `${total.toLocaleString()} collision triangles indexed from ${sourceCollisionTriangles.toLocaleString()} source triangles`
     : `${phase}; ${count.toLocaleString()} of ${total.toLocaleString()} triangles indexed; ${percent.toFixed(1)} percent`);
   panel.hidden = false;
   if (complete) {
@@ -1735,6 +1747,7 @@ function activeCollisionTriangleCount() {
 window.render_game_to_text = () => JSON.stringify({
   mode,
   ready,
+  render_quality: mobileLike ? 'mobile' : 'desktop',
   room: ready ? roomName() : null,
   character: {
     height_feet: 6,
@@ -1818,6 +1831,10 @@ window.render_game_to_text = () => JSON.stringify({
   lighting: {mode:'global walkthrough lighting',ambient_enabled:true,environment_lighting:true,fixture_only_blender:true},
   renderer_memory: renderer.info.memory,
   collision_triangles: totalCollisionTriangles,
+  collision_source_triangles: sourceCollisionTriangles,
+  collision_triangles_saved: Math.max(0, sourceCollisionTriangles - totalCollisionTriangles),
+  collision_reduction_percent: sourceCollisionTriangles > 0
+    ? +Math.max(0, (sourceCollisionTriangles - totalCollisionTriangles) / sourceCollisionTriangles * 100).toFixed(1) : 0,
   collision_triangles_built: triangleCount,
   collision_batches_built: collisionChunksIndexed,
   collision_batches_by_map: collisionChunksIndexedByMap,
@@ -1900,13 +1917,102 @@ if (testing) {
  * Float32Array before Octree.fromGraphNode() created its own triangle objects.
  * That caused a very large transient memory spike.
  *
- * This version reads the source geometry once and adds exactly one THREE.Triangle
- * per source triangle directly to the Octree. No geometry clones, giant coords
- * arrays, reversed duplicate faces, or temporary collider meshes are created.
+ * This version reads source positions directly into the Octree. Floors, lower
+ * shell walls, partitions, furniture and room ceilings retain their authored
+ * collision triangles; the dense upper outer shell is replaced by a low-polygon
+ * torus-profile proxy. No full-resolution cloned meshes or giant coordinate
+ * arrays are created.
  */
+function geometryTriangleCount(geometry) {
+  const index = geometry.index;
+  const position = geometry.getAttribute('position');
+  return Math.floor((index ? index.count : position?.count || 0) / 3);
+}
+
+function worldYAt(position, matrix, index) {
+  const e = matrix.elements;
+  return e[1] * position.getX(index)
+    + e[5] * position.getY(index)
+    + e[9] * position.getZ(index)
+    + e[13];
+}
+
+function countLowerShellTriangles(mesh) {
+  const geometry = mesh.geometry;
+  const position = geometry.getAttribute('position');
+  const index = geometry.index;
+  const vertexCount = index ? index.count : position.count;
+  let count = 0;
+  const vertexIndex = i => index ? index.getX(i) : i;
+
+  for (let i = 0; i < vertexCount; i += 3) {
+    const a = vertexIndex(i);
+    const b = vertexIndex(i + 1);
+    const c = vertexIndex(i + 2);
+    if (Math.max(
+      worldYAt(position, mesh.matrixWorld, a),
+      worldYAt(position, mesh.matrixWorld, b),
+      worldYAt(position, mesh.matrixWorld, c),
+    ) < ROOF_CUTAWAY_HEIGHT) count++;
+  }
+  return count;
+}
+
+function createSimplifiedRoofCollisionProxy() {
+  // The roof section is the 20–50 ft upper half of a 15 ft-radius torus.
+  // This parametric collider preserves that profile at 3° around the house
+  // and 24 bands across the arch while replacing the exported high-detail
+  // shell tessellation with a compact, collision-only surface.
+  const majorRadius = 35 * FT;
+  const minorRadius = 15 * FT;
+  const firstProfileAngle = Math.asin(ROOF_CUTAWAY_HEIGHT / minorRadius);
+  const lastProfileAngle = Math.PI - firstProfileAngle;
+  const profileVertices = ROOF_COLLISION_PROFILE_SEGMENTS + 1;
+  const positions = [];
+  const indices = [];
+
+  for (let azimuth = 0; azimuth < ROOF_COLLISION_AZIMUTH_SEGMENTS; azimuth++) {
+    const phi = azimuth / ROOF_COLLISION_AZIMUTH_SEGMENTS * Math.PI * 2;
+    for (let profile = 0; profile <= ROOF_COLLISION_PROFILE_SEGMENTS; profile++) {
+      const theta = firstProfileAngle
+        + (lastProfileAngle - firstProfileAngle) * profile / ROOF_COLLISION_PROFILE_SEGMENTS;
+      const radialDistance = majorRadius + minorRadius * Math.cos(theta);
+      positions.push(
+        radialDistance * Math.cos(phi),
+        minorRadius * Math.sin(theta),
+        -radialDistance * Math.sin(phi),
+      );
+    }
+  }
+
+  for (let azimuth = 0; azimuth < ROOF_COLLISION_AZIMUTH_SEGMENTS; azimuth++) {
+    const nextAzimuth = (azimuth + 1) % ROOF_COLLISION_AZIMUTH_SEGMENTS;
+    for (let profile = 0; profile < ROOF_COLLISION_PROFILE_SEGMENTS; profile++) {
+      const a = azimuth * profileVertices + profile;
+      const b = nextAzimuth * profileVertices + profile;
+      const c = nextAzimuth * profileVertices + profile + 1;
+      const d = azimuth * profileVertices + profile + 1;
+      // Downward-facing normals let rays and the capsule collide from inside.
+      indices.push(a, c, b, a, d, c);
+    }
+  }
+
+  const geometry = new THREE.BufferGeometry();
+  geometry.setAttribute('position', new THREE.Float32BufferAttribute(positions, 3));
+  geometry.setIndex(indices);
+  const proxy = new THREE.Mesh(geometry);
+  proxy.userData.collision = true;
+  proxy.userData.group = '04';
+  proxy.userData.collisionProxy = true;
+  proxy.updateMatrixWorld(true);
+  return proxy;
+}
+
 async function buildCollisionOctree(root) {
   const collisionMeshes = [];
-  let sourceTriangleCount = 0;
+  let outputTriangleCount = 0;
+  sourceCollisionTriangles = 0;
+  let hasOuterShell = false;
 
   root.updateMatrixWorld(true);
 
@@ -1916,15 +2022,26 @@ async function buildCollisionOctree(root) {
     const position = o.geometry.getAttribute('position');
     if (!position) return;
 
-    const count = o.geometry.index
-      ? o.geometry.index.count / 3
-      : position.count / 3;
+    const count = geometryTriangleCount(o.geometry);
 
     collisionMeshes.push(o);
-    sourceTriangleCount += count;
+    sourceCollisionTriangles += count;
+    if (o.userData.group === '04') {
+      hasOuterShell = true;
+      outputTriangleCount += countLowerShellTriangles(o);
+    } else {
+      outputTriangleCount += count;
+    }
   });
 
-  totalCollisionTriangles = Math.floor(sourceTriangleCount);
+  if (hasOuterShell) {
+    const roofProxy = createSimplifiedRoofCollisionProxy();
+    collisionMeshes.push(roofProxy);
+    outputTriangleCount += geometryTriangleCount(roofProxy.geometry);
+  }
+
+  totalCollisionTriangles = Math.floor(outputTriangleCount);
+  sourceCollisionTriangles = Math.floor(sourceCollisionTriangles);
   triangleCount = 0;
   collisionChunksIndexed = 0;
   for (const key of Object.keys(collisionForests)) {
@@ -1996,6 +2113,8 @@ async function buildCollisionOctree(root) {
 
     for (const mesh of collisionMeshes) {
       const group = mesh.userData.group;
+      if (group === '04' && !mesh.userData.collisionProxy && phase === 'secondary') continue;
+      if (mesh.userData.collisionProxy && phase === 'essential') continue;
       const system = mesh.userData.system_option;
       const collisionKey = system
         || (group === '06' ? 'furniture'
@@ -2016,6 +2135,12 @@ async function buildCollisionOctree(root) {
 
       const addTriangle = (ia, ib, ic) => {
         visited++;
+        if (group === '04' && !mesh.userData.collisionProxy && Math.max(
+          worldYAt(position, matrixWorld, ia),
+          worldYAt(position, matrixWorld, ib),
+          worldYAt(position, matrixWorld, ic),
+        ) >= ROOF_CUTAWAY_HEIGHT) return;
+
         const a = new THREE.Vector3().fromBufferAttribute(position, ia).applyMatrix4(matrixWorld);
         const b = new THREE.Vector3().fromBufferAttribute(position, ib).applyMatrix4(matrixWorld);
         const c = new THREE.Vector3().fromBufferAttribute(position, ic).applyMatrix4(matrixWorld);
@@ -2023,9 +2148,10 @@ async function buildCollisionOctree(root) {
         // Keep the upper shell and room roofs in removable maps for the
         // cutaway. Triangles crossing the cut plane stay in the removable map.
         const maxY = Math.max(a.y, b.y, c.y);
-        const targetKey = splitByHeight && maxY >= ROOF_CUTAWAY_HEIGHT
-          ? group === '04' ? 'roof' : 'interior_roof'
-          : collisionKey;
+        const targetKey = mesh.userData.collisionProxy ? 'roof'
+          : splitByHeight && maxY >= ROOF_CUTAWAY_HEIGHT
+            ? group === '04' ? 'roof' : 'interior_roof'
+            : collisionKey;
         const isEssential = targetKey === 'base' || targetKey === 'interior';
         if ((phase === 'essential') !== isEssential) return;
 
@@ -2133,8 +2259,8 @@ try {
 
     if (o.userData.group === '15') o.visible = false;
     if (o.userData.system_option) o.visible=!!systemEnabled[o.userData.system_option];
-    o.castShadow = o.userData.group !== '15' && !materials.some(m => m?.transparent) && o.userData.group !== '10';
-    o.receiveShadow = true;
+    o.castShadow = !mobileLike && o.userData.group !== '15' && !materials.some(m => m?.transparent) && o.userData.group !== '10';
+    o.receiveShadow = !mobileLike;
   });
 
   // Add and render the visible house before the collision build. This gives the

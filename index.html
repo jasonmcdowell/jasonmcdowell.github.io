@@ -2,115 +2,76 @@
 <html lang="en">
 <head>
   <meta charset="utf-8">
-  <meta name="viewport" content="width=device-width,initial-scale=1">
-  <title>Dream Home · Walkthrough</title>
-  <link rel="icon" href="data:,">
-  <link rel="stylesheet" href="style.css">
-  <script type="importmap">{"imports":{"three":"./vendor/build/three.module.js","three/addons/":"./vendor/addons/"}}</script>
-<script>window.DREAM_HOME_VIEW_RENDER_ENABLED = false;</script>
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <meta name="description" content="Jason McDowell's small collection of interactive projects and experiments.">
+  <title>Jason McDowell · Projects</title>
+  <link rel="stylesheet" href="site.css">
 </head>
 <body>
-  <canvas id="world" aria-label="First-person dream home walkthrough"></canvas>
-  <div id="collision-progress" hidden role="status" aria-live="polite">
-    <span id="collision-progress-label">Preparing collision triangles</span>
-    <progress id="collision-progress-bar" max="100" value="0" aria-label="Collision triangle loading progress"></progress>
-  </div>
+  <header class="site-header">
+    <a class="wordmark" href="/">Jason McDowell</a>
+    <nav aria-label="Primary navigation">
+      <a href="#projects">Projects</a>
+      <a class="muted-link" href="#resume">Resume <span>soon</span></a>
+      <a href="https://github.com/jasonmcdowell" target="_blank" rel="noopener">GitHub ↗</a>
+    </nav>
+  </header>
 
-  <div id="hud" hidden>
-    <div class="place"><span class="dot"></span><span id="room">Living room</span></div>
-    <span id="hint">H / Options · C screenshot · V render</span>
-    <span id="movement-mode" aria-live="polite">WALK</span>
-    <span id="gamepad-status" hidden>Controller not detected</span>
-    <span id="recording-badge" hidden>● REC <span id="recording-count">0 samples</span></span>
-    <span id="capture-toast" hidden role="status"></span>
-    <div id="crosshair">+</div>
-  </div>
+  <main>
+    <section class="intro" aria-labelledby="page-title">
+      <p class="eyebrow">PERSONAL WORKSPACE</p>
+      <h1 id="page-title">A few things I’m making.</h1>
+      <p class="lede">Interactive spaces, experiments, and projects collected in one place.</p>
+    </section>
 
-  <div id="touch-controls" hidden aria-label="Touch walkthrough controls">
-    <div id="touch-move-pad" role="application" aria-label="Touch joystick for movement">
-      <span class="touch-pad-label">MOVE</span>
-      <span id="touch-move-nub" aria-hidden="true"></span>
-    </div>
-    <p id="touch-help">Move with the left pad · drag the open view to look</p>
-    <div id="touch-buttons" aria-label="Touch actions">
-      <button id="touch-hud" type="button" aria-label="Show or hide walkthrough options">HUD</button>
-      <button id="touch-run" type="button" aria-label="Toggle running">WALK</button>
-      <button id="touch-descend" type="button" aria-label="Descend while flying">DOWN</button>
-      <button id="touch-jump" type="button" aria-label="Jump; double-tap to toggle flight">JUMP</button>
-      <button id="touch-record" type="button" aria-label="Start path recording">REC</button>
-    </div>
-  </div>
+    <section id="projects" class="project-grid" aria-label="Projects">
+      <a class="project-card project-card-featured" href="/home/">
+        <div class="card-image dream-home-image">
+          <img src="home/assets/shade-overview.png" alt="A curved garden canopy from the Dream Home project">
+          <span class="card-pill">Try the walkthrough ↗</span>
+        </div>
+        <div class="card-copy">
+          <p class="card-kicker">INTERACTIVE SPACE · 2026</p>
+          <h2>Dream Home</h2>
+          <p>A first-person walkthrough of a house imagined in Blender and brought into the browser.</p>
+        </div>
+      </a>
 
-  <main id="menu">
-    <section class="panel loading-panel">
-      <p class="eyebrow">DREAM HOME / V07</p>
-      <h1>Loading the house.</h1>
-      <p class="intro">Preparing the living-room start point and collision map.</p>
-      <p id="loading-status" role="status">Loading your Blender model</p>
+      <article id="resume" class="project-card project-card-soon">
+        <div class="card-icon" aria-hidden="true">↗</div>
+        <div class="card-copy">
+          <p class="card-kicker">PERSONAL</p>
+          <h2>Resume</h2>
+          <p>A concise overview of experience and selected work will live here soon.</p>
+          <span class="card-status">Coming soon</span>
+        </div>
+      </article>
+
+      <a class="project-card" href="https://github.com/jasonmcdowell?tab=repositories" target="_blank" rel="noopener">
+        <div class="card-icon github-icon" aria-hidden="true">⌘</div>
+        <div class="card-copy">
+          <p class="card-kicker">CODE · OPEN SOURCE</p>
+          <h2>GitHub projects</h2>
+          <p>Browse the public experiments, tools, and works in progress behind this site.</p>
+          <span class="card-status">View repositories ↗</span>
+        </div>
+      </a>
+
+      <article class="project-card project-card-note">
+        <div class="card-icon" aria-hidden="true">+</div>
+        <div class="card-copy">
+          <p class="card-kicker">COLLABORATION</p>
+          <h2>More buildings</h2>
+          <p>This collection can grow into a small neighborhood of interactive places.</p>
+          <span class="card-status">Build something together</span>
+        </div>
+      </article>
     </section>
   </main>
 
-  <aside id="view-controls" hidden aria-label="Unified walkthrough controls">
-    <p class="eyebrow">DREAM HOME / V07</p>
-    <h2>Walkthrough controls</h2>
-    <p class="unified-intro">Starts in the living room · six-foot character · eyes at 5′2″.</p>
-    <dl class="controls compact-controls">
-      <dt>W A S D / arrows</dt><dd>Move</dd>
-      <dt>Mouse / right stick</dt><dd>Look</dd>
-      <dt>Space / Cross</dt><dd>Jump · double to fly</dd>
-      <dt>Shift / L3 / L1</dt><dd>Run · L1 toggles</dd>
-      <dt>Ctrl / Circle</dt><dd>Descend in flight</dd>
-      <dt>H / Options</dt><dd>Toggle this panel</dd>
-      <dt>R</dt><dd>Record path</dd>
-      <dt>Create / C</dt><dd>Screenshot</dd>
-      <dt class="render-only">V</dt><dd class="render-only">Eevee view render</dd>
-      <dt>Esc / F</dt><dd>Release mouse / fullscreen</dd>
-    </dl>
-    <p id="gamepad-menu-status" class="controller-status" aria-live="polite">Controller: checking…</p>
-    <div class="keyboard-map">
-      <span>1 names · 2 IDs · 3 areas · 4 square grid</span>
-      <span>5 rings · 6 height · 7 wall lengths</span>
-      <span>8 door canopies · 9 round awning · 0 roof cutaway</span>
-      <span>B bare shell · M furniture · P bouncing projectiles</span>
-      <span>D-pad ↑/↓ grid presets · ←/→ label presets · [ / ] time</span>
-    </div>
-    <p id="status" role="status">Loading your Blender model</p>
-    <div class="view-toggle-grid">
-      <label><input type="checkbox" id="labels" checked> Room names <kbd>1</kbd></label>
-      <label><input type="checkbox" id="id-labels"> Room &amp; door IDs <kbd>2</kbd></label>
-      <label><input type="checkbox" id="area-labels"> Approximate room areas <kbd>3</kbd></label>
-      <label><input type="checkbox" id="square-grid" checked> 1 ft square grid <kbd>4</kbd></label>
-      <label><input type="checkbox" id="radial-grid"> 1 ft rings · 9° spokes <kbd>5</kbd></label>
-      <label><input type="checkbox" id="height-grid"> 1 ft height grid <kbd>6</kbd></label>
-      <label><input type="checkbox" id="wall-lengths"> Wall edge lengths <kbd>7</kbd></label>
-      <label><input type="checkbox" id="door-canopies"> Door canopies &amp; drains <kbd>8</kbd></label>
-      <label><input type="checkbox" id="ring-awning" checked> Ring awning &amp; gutters <kbd>9</kbd></label>
-      <label><input type="checkbox" id="roof-cutaway"> Open roof above 7 ft 11 in <kbd>0</kbd></label>
-      <label><input type="checkbox" id="bare-shell"> Bare shell: hide partitions &amp; equipment <kbd>B</kbd></label>
-      <label><input type="checkbox" id="furniture-toggle" checked> Furniture &amp; equipment <kbd>M</kbd></label>
-      <label><input type="checkbox" id="projectiles-toggle" checked> Bouncing projectiles (L2 / R2) <kbd>P</kbd></label>
-    </div>
-    <div class="study-row">
-      <label for="exterior-finish">Exterior finish study</label>
-      <select id="exterior-finish"><option value="plain">Current plain shell</option><option value="stone" selected>Flat stone (default)</option><option value="penrose">P3 Penrose tile</option></select>
-    </div>
-    <label class="time-label" for="time-of-day">Time of day <output id="clock">3:00 pm</output></label>
-    <input id="time-of-day" type="range" min="0" max="24" step="0.25" value="15">
-    <div id="recording-panel-status" role="status">R starts a new path recording; R stops and saves it.</div>
-    <div class="panel-links"><a href="room-reference.html" target="_blank" rel="noopener">Room &amp; door reference ↗</a><a href="shade-reference.html" target="_blank" rel="noopener">Shade &amp; finish reference ↗</a></div>
-  </aside>
-
-  <button id="render-view-btn" class="render-view-launch render-only" type="button">Render this view (Eevee) · V</button>
-  <div id="render-view-overlay" class="render-only" hidden role="dialog" aria-modal="true" aria-label="Rendered view">
-    <div id="render-view-card">
-      <div id="render-view-header"><strong>Rendered view</strong><button id="render-view-close" type="button">Resume walking</button></div>
-      <img id="render-view-image" hidden alt="Eevee render of the current walkthrough view">
-      <p id="render-view-status" role="status">Starting the local Eevee render…</p>
-      <a id="render-view-download" hidden download>Download PNG</a>
-      <p class="render-view-help">Move with the keyboard or controller to return to the walkthrough.</p>
-    </div>
-  </div>
-
-  <script type="module" src="app.js"></script>
+  <footer class="site-footer">
+    <span>Jason McDowell</span>
+    <span>Made for sharing good ideas with family and friends.</span>
+  </footer>
 </body>
 </html>
