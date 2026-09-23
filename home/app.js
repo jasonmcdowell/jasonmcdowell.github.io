@@ -205,7 +205,12 @@ let cutawayDropThrough = false;
 const ROOF_CUTAWAY_HEIGHT = (7 + 11 / 12) * FT;
 const ROOF_COLLISION_AZIMUTH_SEGMENTS = 120;
 const ROOF_COLLISION_PROFILE_SEGMENTS = 24;
+const MOBILE_SHELL_AZIMUTH_SEGMENTS = 64;
+const MOBILE_SHELL_PROFILE_SEGMENTS = 10;
+const MOBILE_FLOOR_SEGMENTS = 96;
+const MOBILE_PARTITION_TRIANGLE_STRIDE = 8;
 const roofCutawayPlane = new THREE.Plane(new THREE.Vector3(0, -1, 0), ROOF_CUTAWAY_HEIGHT);
+let collisionProfile = mobileLike ? 'mobile shell + sampled partitions' : 'full authored collision maps';
 
 function refreshActiveCollisionWorlds() {
   const collisionWorlds = [world];
@@ -1831,6 +1836,7 @@ window.render_game_to_text = () => JSON.stringify({
   lighting: {mode:'global walkthrough lighting',ambient_enabled:true,environment_lighting:true,fixture_only_blender:true},
   renderer_memory: renderer.info.memory,
   collision_triangles: totalCollisionTriangles,
+  collision_profile: collisionProfile,
   collision_source_triangles: sourceCollisionTriangles,
   collision_triangles_saved: Math.max(0, sourceCollisionTriangles - totalCollisionTriangles),
   collision_reduction_percent: sourceCollisionTriangles > 0
@@ -1958,24 +1964,18 @@ function countLowerShellTriangles(mesh) {
   return count;
 }
 
-function createSimplifiedRoofCollisionProxy() {
-  // The roof section is the 20–50 ft upper half of a 15 ft-radius torus.
-  // This parametric collider preserves that profile at 3° around the house
-  // and 24 bands across the arch while replacing the exported high-detail
-  // shell tessellation with a compact, collision-only surface.
+function createTorusCollisionProxy(firstProfileAngle, lastProfileAngle, azimuthSegments, profileSegments) {
   const majorRadius = 35 * FT;
   const minorRadius = 15 * FT;
-  const firstProfileAngle = Math.asin(ROOF_CUTAWAY_HEIGHT / minorRadius);
-  const lastProfileAngle = Math.PI - firstProfileAngle;
-  const profileVertices = ROOF_COLLISION_PROFILE_SEGMENTS + 1;
+  const profileVertices = profileSegments + 1;
   const positions = [];
   const indices = [];
 
-  for (let azimuth = 0; azimuth < ROOF_COLLISION_AZIMUTH_SEGMENTS; azimuth++) {
-    const phi = azimuth / ROOF_COLLISION_AZIMUTH_SEGMENTS * Math.PI * 2;
-    for (let profile = 0; profile <= ROOF_COLLISION_PROFILE_SEGMENTS; profile++) {
+  for (let azimuth = 0; azimuth < azimuthSegments; azimuth++) {
+    const phi = azimuth / azimuthSegments * Math.PI * 2;
+    for (let profile = 0; profile <= profileSegments; profile++) {
       const theta = firstProfileAngle
-        + (lastProfileAngle - firstProfileAngle) * profile / ROOF_COLLISION_PROFILE_SEGMENTS;
+        + (lastProfileAngle - firstProfileAngle) * profile / profileSegments;
       const radialDistance = majorRadius + minorRadius * Math.cos(theta);
       positions.push(
         radialDistance * Math.cos(phi),
@@ -1985,9 +1985,9 @@ function createSimplifiedRoofCollisionProxy() {
     }
   }
 
-  for (let azimuth = 0; azimuth < ROOF_COLLISION_AZIMUTH_SEGMENTS; azimuth++) {
-    const nextAzimuth = (azimuth + 1) % ROOF_COLLISION_AZIMUTH_SEGMENTS;
-    for (let profile = 0; profile < ROOF_COLLISION_PROFILE_SEGMENTS; profile++) {
+  for (let azimuth = 0; azimuth < azimuthSegments; azimuth++) {
+    const nextAzimuth = (azimuth + 1) % azimuthSegments;
+    for (let profile = 0; profile < profileSegments; profile++) {
       const a = azimuth * profileVertices + profile;
       const b = nextAzimuth * profileVertices + profile;
       const c = nextAzimuth * profileVertices + profile + 1;
@@ -2008,7 +2008,141 @@ function createSimplifiedRoofCollisionProxy() {
   return proxy;
 }
 
+function createSimplifiedRoofCollisionProxy() {
+  // The roof section is the 20–50 ft upper half of a 15 ft-radius torus.
+  // This parametric collider preserves that profile at 3° around the house
+  // and 24 bands across the arch while replacing the exported high-detail
+  // shell tessellation with a compact, collision-only surface.
+  const minorRadius = 15 * FT;
+  const firstProfileAngle = Math.asin(ROOF_CUTAWAY_HEIGHT / minorRadius);
+  const lastProfileAngle = Math.PI - firstProfileAngle;
+  return createTorusCollisionProxy(
+    firstProfileAngle,
+    lastProfileAngle,
+    ROOF_COLLISION_AZIMUTH_SEGMENTS,
+    ROOF_COLLISION_PROFILE_SEGMENTS,
+  );
+}
+
+function createMobileFloorCollisionProxy() {
+  const radius = 52 * FT;
+  const positions = [0, 0, 0];
+  const indices = [];
+  for (let segment = 0; segment <= MOBILE_FLOOR_SEGMENTS; segment++) {
+    const phi = segment / MOBILE_FLOOR_SEGMENTS * Math.PI * 2;
+    positions.push(radius * Math.cos(phi), 0, -radius * Math.sin(phi));
+  }
+  for (let segment = 0; segment < MOBILE_FLOOR_SEGMENTS; segment++) {
+    indices.push(0, segment + 1, segment + 2);
+  }
+  const geometry = new THREE.BufferGeometry();
+  geometry.setAttribute('position', new THREE.Float32BufferAttribute(positions, 3));
+  geometry.setIndex(indices);
+  const proxy = new THREE.Mesh(geometry);
+  proxy.userData.collisionProxy = true;
+  proxy.updateMatrixWorld(true);
+  return proxy;
+}
+
+function addMeshTrianglesToCollisionTree(tree, mesh, triangleFilter = () => true) {
+  const geometry = mesh.geometry;
+  const position = geometry.getAttribute('position');
+  const index = geometry.index;
+  if (!position) return 0;
+  const matrixWorld = mesh.matrixWorld;
+  const a = new THREE.Vector3();
+  const b = new THREE.Vector3();
+  const c = new THREE.Vector3();
+  let count = 0;
+  const triangleTotal = Math.floor((index ? index.count : position.count) / 3);
+  for (let triangleIndex = 0; triangleIndex < triangleTotal; triangleIndex++) {
+    if (!triangleFilter(triangleIndex)) continue;
+    const offset = triangleIndex * 3;
+    const ia = index ? index.getX(offset) : offset;
+    const ib = index ? index.getX(offset + 1) : offset + 1;
+    const ic = index ? index.getX(offset + 2) : offset + 2;
+    a.fromBufferAttribute(position, ia).applyMatrix4(matrixWorld);
+    b.fromBufferAttribute(position, ib).applyMatrix4(matrixWorld);
+    c.fromBufferAttribute(position, ic).applyMatrix4(matrixWorld);
+    tree.addTriangle(new THREE.Triangle(a.clone(), b.clone(), c.clone()));
+    count++;
+  }
+  return count;
+}
+
+async function buildMobileCollisionWorld(root) {
+  // A real iPad can terminate the WebKit tab while the full authored forest
+  // is being assembled, even though desktop and WebKit emulation survive it.
+  // Use a compact analytic shell/floor plus a sparse sample of the important
+  // interior partition groups. This keeps the game walkable without creating
+  // tens of thousands of transient Triangle/Vector3 objects on mobile.
+  collisionProfile = 'mobile shell + sampled partitions';
+  for (const key of Object.keys(collisionForests)) {
+    collisionForests[key].subTrees.length = 0;
+    collisionForests[key].triangles.length = 0;
+    pendingCollisionTrees[key] = new Octree();
+    pendingCollisionTrees[key].maxLevel = 12;
+    pendingCollisionCounts[key] = 0;
+    collisionChunksIndexedByMap[key] = 0;
+    collisionCounts[key] = 0;
+    collisionWorldBuilt[key] = false;
+  }
+  triangleCount = 0;
+  collisionChunksIndexed = 0;
+  sourceCollisionTriangles = 0;
+  totalCollisionTriangles = 0;
+  setLoadStatus('Preparing the lightweight mobile collision map…');
+  updateCollisionProgress(0, 1, 'Preparing mobile collision map');
+  await nextFrame();
+
+  const floor = createMobileFloorCollisionProxy();
+  const shell = createTorusCollisionProxy(
+    0,
+    Math.PI,
+    MOBILE_SHELL_AZIMUTH_SEGMENTS,
+    MOBILE_SHELL_PROFILE_SEGMENTS,
+  );
+  const floorCount = addMeshTrianglesToCollisionTree(world, floor);
+  const shellCount = addMeshTrianglesToCollisionTree(world, shell);
+  floor.geometry.dispose();
+  shell.geometry.dispose();
+
+  root.updateMatrixWorld(true);
+  let partitionCount = 0;
+  root.traverse(mesh => {
+    if (!mesh.isMesh || !mesh.userData.collision) return;
+    if (!INTERIOR_COLLISION_GROUPS.has(mesh.userData.group)) return;
+    const stride = mesh.userData.group === '03' ? MOBILE_PARTITION_TRIANGLE_STRIDE : 1;
+    partitionCount += addMeshTrianglesToCollisionTree(
+      world,
+      mesh,
+      triangleIndex => triangleIndex % stride === 0,
+    );
+  });
+
+  world.build();
+  const count = floorCount + shellCount + partitionCount;
+  totalCollisionTriangles = count;
+  sourceCollisionTriangles = count;
+  triangleCount = count;
+  collisionCounts.base = count;
+  collisionWorldBuilt.base = count > 0;
+  collisionChunksIndexed = 1;
+  collisionChunksIndexedByMap.base = 1;
+  refreshActiveCollisionWorlds();
+  collisionProfile = `mobile shell + sampled partitions (${count.toLocaleString()} triangles)`;
+  updateCollisionProgress(count, count, 'Mobile collision map ready', true);
+  setLoadStatus(`Mobile collision map ready · ${count.toLocaleString()} triangles.`);
+  await nextFrame();
+
+  return async function buildDeferredMobileCollisionWorlds() {
+    setLoadStatus(`Walkthrough ready · mobile collision map active (${count.toLocaleString()} triangles).`);
+    render();
+  };
+}
+
 async function buildCollisionOctree(root) {
+  if (mobileLike) return buildMobileCollisionWorld(root);
   const collisionMeshes = [];
   let outputTriangleCount = 0;
   sourceCollisionTriangles = 0;
