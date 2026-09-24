@@ -166,6 +166,12 @@ h1 {
 
 .mosaic-card-art img { object-position: center; }
 
+.hand-gesture-card-art { background: #05080c; }
+
+.hand-gesture-card-art::after { display: none; }
+
+.hand-gesture-card-art img { object-fit: contain; }
+
 .resume-panel { background: #edf3ef; }
 
 .card-pill {
