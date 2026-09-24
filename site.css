@@ -161,43 +161,10 @@ h1 {
 }
 
 .mosaic-card-art {
-  display: grid;
-  place-items: center;
-  background:
-    radial-gradient(circle at 50% 45%, rgba(99, 135, 149, 0.42), transparent 48%),
-    linear-gradient(145deg, #17313d, #263f49 58%, #182e39);
+  background: #1b353d;
 }
 
-.mosaic-tile-grid {
-  position: relative;
-  z-index: 1;
-  display: grid;
-  width: clamp(150px, 36%, 220px);
-  aspect-ratio: 1;
-  grid-template-columns: repeat(4, minmax(0, 1fr));
-  gap: 7px;
-  padding: 11px;
-  border: 1px solid rgba(255, 255, 255, 0.24);
-  border-radius: 16px;
-  background: rgba(235, 241, 233, 0.08);
-  box-shadow: 0 20px 55px rgba(7, 20, 25, 0.3);
-  transform: rotate(-5deg);
-}
-
-.mosaic-tile-grid span {
-  border: 1px solid rgba(14, 31, 39, 0.14);
-  border-radius: 3px;
-  background: #e9e5d7;
-}
-
-.mosaic-tile-grid span:nth-child(4n + 1) { background: #d47a55; }
-.mosaic-tile-grid span:nth-child(4n + 2) { background: #e8d969; }
-.mosaic-tile-grid span:nth-child(4n + 3) { background: #6288bd; }
-.mosaic-tile-grid span:nth-child(4n) { background: #273b50; }
-.mosaic-tile-grid span:nth-child(5),
-.mosaic-tile-grid span:nth-child(8),
-.mosaic-tile-grid span:nth-child(9),
-.mosaic-tile-grid span:nth-child(14) { background: #d78680; }
+.mosaic-card-art img { object-position: center; }
 
 .resume-panel { background: #edf3ef; }
 
