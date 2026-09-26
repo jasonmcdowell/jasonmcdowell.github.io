@@ -175,24 +175,6 @@ h1 {
 .dictionary-panel { background: #f3eee6; }
 .dictionary-mark { font-family: "Kaiti SC", "STKaiti", "Songti SC", serif; }
 
-.card-pill {
-  position: absolute;
-  z-index: 1;
-  right: 20px;
-  bottom: 18px;
-  padding: 7px 11px;
-  border: 1px solid rgba(255, 255, 255, 0.45);
-  border-radius: 999px;
-  background: rgba(21, 36, 29, 0.72);
-  color: #fff;
-  font-size: 12px;
-  font-weight: 700;
-  backdrop-filter: blur(10px);
-  cursor: text;
-  pointer-events: auto;
-  user-select: text;
-}
-
 .card-copy {
   position: relative;
   z-index: 3;
@@ -225,6 +207,13 @@ h2 {
   color: var(--muted);
   font-size: 13px;
   line-height: 1.3;
+}
+
+.card-copy .card-status {
+  margin-top: 7px;
+  color: var(--accent-dark);
+  font-size: 12px;
+  font-weight: 700;
 }
 
 .card-icon {
@@ -266,7 +255,6 @@ h2 {
   .card-kicker { font-size: clamp(10px, 2vw, 11px); }
   h2 { font-size: clamp(22px, 5vw, 28px); }
   .card-copy p:not(.card-kicker) { font-size: clamp(13px, 3vw, 16px); }
-  .card-pill { right: 14px; bottom: 14px; }
   .site-footer { flex-direction: column; gap: 5px; }
 }
 
