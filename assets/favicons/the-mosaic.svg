@@ -1,0 +1,19 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 64 64">
+  <rect width="64" height="64" rx="15" fill="#263b3d"/>
+  <path d="M7 7h11v11H7z" fill="#d7c9ac"/>
+  <path d="M21 7h11v11H21z" fill="#a86447"/>
+  <path d="M35 7h11v11H35z" fill="#d3aa72"/>
+  <path d="M49 7h8v11h-8z" fill="#e8e2d3"/>
+  <path d="M7 21h11v11H7z" fill="#75513f"/>
+  <path d="M21 21h11v11H21z" fill="#e8e2d3"/>
+  <path d="M35 21h11v11H35z" fill="#55757a"/>
+  <path d="M49 21h8v11h-8z" fill="#c0875f"/>
+  <path d="M7 35h11v11H7z" fill="#65704f"/>
+  <path d="M21 35h11v11H21z" fill="#b18b67"/>
+  <path d="M35 35h11v11H35z" fill="#a95f42"/>
+  <path d="M49 35h8v11h-8z" fill="#d7c9ac"/>
+  <path d="M7 49h11v8H7z" fill="#d3aa72"/>
+  <path d="M21 49h11v8H21z" fill="#55757a"/>
+  <path d="M35 49h11v8H35z" fill="#e8e2d3"/>
+  <path d="M49 49h8v8h-8z" fill="#65704f"/>
+</svg>
