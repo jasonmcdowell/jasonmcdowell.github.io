@@ -171,6 +171,8 @@ h1 {
 
 .hand-gesture-card-art img { object-fit: contain; }
 
+.perception-card-art { background: #101417; }
+
 .resume-panel { background: #edf3ef; }
 .dictionary-panel { background: #f3eee6; }
 .dictionary-mark { font-family: "Kaiti SC", "STKaiti", "Songti SC", serif; }
