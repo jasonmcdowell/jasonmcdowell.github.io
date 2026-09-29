@@ -173,6 +173,12 @@ h1 {
 
 .perception-card-art { background: #101417; }
 
+.xiang-card-art { background: #f3efe3; }
+
+.xiang-card-art::after { display: none; }
+
+.xiang-card-art img { object-fit: contain; }
+
 .resume-panel { background: #edf3ef; }
 .dictionary-card-art {
   display: grid;
