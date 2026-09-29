@@ -174,8 +174,22 @@ h1 {
 .perception-card-art { background: #101417; }
 
 .resume-panel { background: #edf3ef; }
-.dictionary-panel { background: #f3eee6; }
-.dictionary-mark { font-family: "Kaiti SC", "STKaiti", "Songti SC", serif; }
+.dictionary-card-art {
+  display: grid;
+  place-items: center;
+  background: #f3eee6;
+}
+
+.dictionary-card-art::after { display: none; }
+
+.dictionary-card-art img {
+  width: min(54%, 168px);
+  height: auto;
+  aspect-ratio: 1;
+  object-fit: contain;
+  border-radius: 22%;
+  box-shadow: 0 14px 28px rgba(35, 52, 45, 0.14);
+}
 
 .card-copy {
   position: relative;
