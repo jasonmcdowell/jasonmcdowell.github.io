@@ -179,6 +179,10 @@ h1 {
 
 .xiang-card-art img { object-fit: contain; }
 
+.thesis-card-art { background: #e8e3d8; }
+
+.thesis-card-art img { object-position: center 62%; }
+
 .resume-panel { background: #edf3ef; }
 .dictionary-card-art {
   display: grid;
