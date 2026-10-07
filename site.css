@@ -165,6 +165,10 @@ h1 {
 
 .mosaic-card-art img { object-position: center; }
 
+.rainbow-radar-card-art { background: #172b2d; }
+
+.rainbow-radar-card-art img { object-position: center; }
+
 .hand-gesture-card-art { background: #05080c; }
 
 .hand-gesture-card-art::after { display: none; }
